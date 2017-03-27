@@ -482,17 +482,22 @@ requests will be queued for later execution. The size of the queue is configurab
 <h3 id="graphql-specific-components">GraphQL Specific Components</h3>
 
 <ul>
-<li><p>[graphql-common]()</p></li>
+<li><p><a href="https://networknt.github.io/light-java-graphql/components/graphql-common/">graphql-common</a>
+contains common utilities and static variables that are shared by other components.</p></li>
 
-<li><p>[graphql-router]()</p></li>
+<li><p><a href="https://networknt.github.io/light-java-graphql/components/graphql-router/">graphql-router</a>
+is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.</p></li>
 </ul>
 
 <h3 id="graphql-specific-middleware-handlers">GraphQL Specific Middleware Handlers</h3>
 
 <ul>
-<li><p>[graphql-security]()</p></li>
+<li><p><a href="https://networknt.github.io/light-java-graphql/components/graphql-security/">graphql-security</a>
+verifies JWT token in request header and verifies scopes if it is enabled.</p></li>
 
-<li><p>[graphql-validator]()</p></li>
+<li><p><a href="https://networknt.github.io/light-java-graphql/components/graphql-validator/">graphql-validator</a>
+validates the path and methods of the request. Other schema validation will be handled by the
+GraphQL componnent.</p></li>
 </ul>
 
 

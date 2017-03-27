@@ -135,17 +135,22 @@ enableGraphiQL: true
 &lt;h2 id=&#34;common-components&#34;&gt;Common Components&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-common/&#34;&gt;graphql-common&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-common/&#34;&gt;graphql-common&lt;/a&gt;
+contains common utilities and static variables that are shared by other components.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-router/&#34;&gt;graphql-router&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-router/&#34;&gt;graphql-router&lt;/a&gt;
+is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;middleware-handlers&#34;&gt;Middleware Handlers&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-security/&#34;&gt;graphql-security&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-security/&#34;&gt;graphql-security&lt;/a&gt;
+verifies JWT token in request header and verifies scopes if it is enabled.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-validator/&#34;&gt;graphql-validator&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-validator/&#34;&gt;graphql-validator&lt;/a&gt;
+validates the path and methods of the request. Other schema validation will be handled by the
+GraphQL componnent.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
