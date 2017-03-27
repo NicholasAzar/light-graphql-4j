@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>GraphQL Validator - Light Java GraphQL - A GraphQL framework built on top of Light-Java</title>
+    <title>Roadmap - Light Java GraphQL - A GraphQL framework built on top of Light-Java</title>
     <meta name="generator" content="Hugo 0.18.1" />
 
     
     <meta name="description" content="Light Java GraphQL Docs">
     
-    <link rel="canonical" href="https://networknt.github.io/light-java-graphql/components/graphql-validator/">
+    <link rel="canonical" href="https://networknt.github.io/light-java-graphql/roadmap/">
     
     <meta name="author" content="Steve Hu">
     
 
-    <meta property="og:url" content="https://networknt.github.io/light-java-graphql/components/graphql-validator/">
+    <meta property="og:url" content="https://networknt.github.io/light-java-graphql/roadmap/">
     <meta property="og:title" content="Light Java GraphQL - A GraphQL framework built on top of Light-Java">
     <meta property="og:image" content="https://networknt.github.io/light-java-graphql/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="Light Java GraphQL - A GraphQL framework built on top of Light-Java">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        GraphQL Validator
+        Roadmap
       </div>
     </div>
 
@@ -288,11 +288,14 @@
 
 
 
-<a  title="Roadmap" href="https://networknt.github.io/light-java-graphql/roadmap/">
+<a class="current" title="Roadmap" href="https://networknt.github.io/light-java-graphql/roadmap/">
 	
 	Roadmap
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
   
@@ -353,21 +356,20 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>GraphQL Validator </h1>
+			<h1>Roadmap </h1>
 
-			<p>Basic request validation for the graphql path and methods. It is the first line of
-validation right after graphql-security and it doesn&rsquo;t have any knowledge about the
-graphql query parameter and body. Other schema based validation will be done at
-GraphQL level.</p>
+			<p>The current framework is working and there are several examples can be found at</p>
 
-<p>It shares the same configuration file with swagger-validator and here is an example.</p>
+<p><a href="https://github.com/networknt/light-java-example/tree/master/graphql">https://github.com/networknt/light-java-example/tree/master/graphql</a></p>
 
-<pre><code># Validate request/response for GraphQL request
----
-enabled: true
-enableResponseValidator: false
+<p>There are several things in mind to improved it.</p>
 
-</code></pre>
+<ul>
+<li>Add fine-grained authorization</li>
+<li>Write an example with database as data source.</li>
+<li>Write an example with in-memory data grid as data source.</li>
+<li>Example of accessing other services.</li>
+</ul>
 
 
 			<aside class="copyright" role="note">
@@ -386,7 +388,7 @@ enableResponseValidator: false
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-java-graphql/roadmap/" title="Roadmap">
+      <a href="https://networknt.github.io/light-java-graphql/getting-started/" title="Getting Started">
         <span class="direction">
           Previous
         </span>
@@ -396,7 +398,7 @@ enableResponseValidator: false
           </div>
           <div class="stretch">
             <div class="title">
-              Roadmap
+              Getting Started
             </div>
           </div>
         </div>
@@ -406,14 +408,14 @@ enableResponseValidator: false
 
   <div class="next">
   
-      <a href="https://networknt.github.io/light-java-graphql/components/graphql-security/" title="GraphQL Security">
+      <a href="https://networknt.github.io/light-java-graphql/components/graphql-validator/" title="GraphQL Validator">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              GraphQL Security
+              GraphQL Validator
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

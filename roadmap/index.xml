@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Roadmaps on Light Java GraphQL - A GraphQL framework built on top of Light-Java</title>
+    <link>https://networknt.github.io/light-java-graphql/roadmap/index.xml</link>
+    <description>Recent content in Roadmaps on Light Java GraphQL - A GraphQL framework built on top of Light-Java</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Mon, 27 Mar 2017 15:45:30 -0400</lastBuildDate>
+    <atom:link href="https://networknt.github.io/light-java-graphql/roadmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Roadmap</title>
+      <link>https://networknt.github.io/light-java-graphql/roadmap/</link>
+      <pubDate>Mon, 27 Mar 2017 15:45:30 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/roadmap/</guid>
+      <description>&lt;p&gt;The current framework is working and there are several examples can be found at&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There are several things in mind to improved it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add fine-grained authorization&lt;/li&gt;
+&lt;li&gt;Write an example with database as data source.&lt;/li&gt;
+&lt;li&gt;Write an example with in-memory data grid as data source.&lt;/li&gt;
+&lt;li&gt;Example of accessing other services.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

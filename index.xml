@@ -7,8 +7,114 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
-    <lastBuildDate>Mon, 27 Mar 2017 14:25:32 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 27 Mar 2017 17:05:38 -0400</lastBuildDate>
     <atom:link href="https://networknt.github.io/light-java-graphql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>relaytodo</title>
+      <link>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</link>
+      <pubDate>Mon, 27 Mar 2017 17:05:38 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mutation</title>
+      <link>https://networknt.github.io/light-java-graphql/tutorials/mutation/</link>
+      <pubDate>Mon, 27 Mar 2017 17:05:23 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/tutorials/mutation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hello World Tutorial</title>
+      <link>https://networknt.github.io/light-java-graphql/tutorials/hello/</link>
+      <pubDate>Mon, 27 Mar 2017 17:05:10 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/tutorials/hello/</guid>
+      <description>&lt;p&gt;This is the first example application and the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/hello&#34;&gt;README.md&lt;/a&gt;
+shows how to use it.&lt;/p&gt;
+
+&lt;p&gt;Unlike &lt;a href=&#34;https://github.com/networknt/light-java-rest&#34;&gt;light-java-rest&lt;/a&gt; has a &lt;a href=&#34;https://github.com/networknt/swagger-codegen&#34;&gt;swagger-codegen&lt;/a&gt;
+to generate the project, we have to construct the project based on the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/petstore&#34;&gt;petstore&lt;/a&gt;
+example and modify some files for GraphQL.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://networknt.github.io/light-java-graphql/tools/</link>
+      <pubDate>Mon, 27 Mar 2017 16:03:51 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/tools/</guid>
+      <description>&lt;p&gt;The most useful tool is the GraphiQL application that is served at&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/graphql&#34;&gt;http://localhost:8080/graphql&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For more information about this tool, please check this &lt;a href=&#34;https://github.com/graphql/graphiql&#34;&gt;site&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://networknt.github.io/light-java-graphql/tutorials/</link>
+      <pubDate>Mon, 27 Mar 2017 16:03:38 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/tutorials/</guid>
+      <description>
+
+&lt;p&gt;There are three tutorials in the example &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;folder&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;hello&#34;&gt;Hello&lt;/h2&gt;
+
+&lt;p&gt;This is a very simple Hello World query to show you how to get GraphQL up and running.&lt;/p&gt;
+
+&lt;h2 id=&#34;mutation&#34;&gt;Mutation&lt;/h2&gt;
+
+&lt;p&gt;This example shows you how to create a full blown GraphQL service with both query and mutation.&lt;/p&gt;
+
+&lt;h2 id=&#34;relay-todo&#34;&gt;Relay Todo&lt;/h2&gt;
+
+&lt;p&gt;This is to show you how to build a GraphQL service that is working with Relayjs.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting Started</title>
+      <link>https://networknt.github.io/light-java-graphql/getting-started/</link>
+      <pubDate>Mon, 27 Mar 2017 16:03:12 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/getting-started/</guid>
+      <description>&lt;p&gt;To get started, an easy way is to copy one of the examples and replace the schema with yours.&lt;/p&gt;
+
+&lt;p&gt;If you compare between the examples, the only difference is schema classes.&lt;/p&gt;
+
+&lt;p&gt;Here is the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;link&lt;/a&gt; to examples.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Roadmap</title>
+      <link>https://networknt.github.io/light-java-graphql/roadmap/</link>
+      <pubDate>Mon, 27 Mar 2017 15:45:30 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/roadmap/</guid>
+      <description>&lt;p&gt;The current framework is working and there are several examples can be found at&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There are several things in mind to improved it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add fine-grained authorization&lt;/li&gt;
+&lt;li&gt;Write an example with database as data source.&lt;/li&gt;
+&lt;li&gt;Write an example with in-memory data grid as data source.&lt;/li&gt;
+&lt;li&gt;Example of accessing other services.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>GraphQL Validator</title>
