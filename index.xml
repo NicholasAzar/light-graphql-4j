@@ -7,16 +7,295 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
-    <lastBuildDate>Sun, 26 Mar 2017 21:03:44 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 27 Mar 2017 14:25:32 -0400</lastBuildDate>
     <atom:link href="https://networknt.github.io/light-java-graphql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>index</title>
+      <title>GraphQL Validator</title>
+      <link>https://networknt.github.io/light-java-graphql/components/graphql-validator/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:32 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/components/graphql-validator/</guid>
+      <description>&lt;p&gt;Basic request validation for the graphql path and methods. It is the first line of
+validation right after graphql-security and it doesn&amp;rsquo;t have any knowledge about the
+graphql query parameter and body. Other schema based validation will be done at
+GraphQL level.&lt;/p&gt;
+
+&lt;p&gt;It shares the same configuration file with swagger-validator and here is an example.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Validate request/response for GraphQL request
+---
+enabled: true
+enableResponseValidator: false
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Security</title>
+      <link>https://networknt.github.io/light-java-graphql/components/graphql-security/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:26 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/components/graphql-security/</guid>
+      <description>&lt;p&gt;This module is very similar with swagger-security but as there is swagger specification
+we cannot verify scopes against specification. GraphQL recommend authorization outside
+of schema so that we can only verify query scope and mutation scope for read and write
+access.&lt;/p&gt;
+
+&lt;p&gt;This is the handler that should be put before graphql-validator. There is no need to
+do any validation if JWT token does not exist in the request header.&lt;/p&gt;
+
+&lt;p&gt;The module share the same security.yml and here is an example.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Security configuration in light framework.
+---
+# Enable JWT verification flag.
+enableVerifyJwt: true
+
+# Enable JWT scope verification. Only valid when enableVerifyJwt is true.
+enableVerifyScope: true
+
+# User for test only. should be always be false on official environment.
+enableMockJwt: false
+
+# JWT signature public certificates. kid and certificate path mappings.
+jwt:
+  certificate:
+    &#39;100&#39;: oauth/primary.crt
+    &#39;101&#39;: oauth/secondary.crt
+  clockSkewInSeconds: 60
+
+# Enable or disable JWT token logging
+logJwtToken: true
+
+# Enable or disable client_id, user_id and scope logging.
+logClientUserScope: false
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Router</title>
+      <link>https://networknt.github.io/light-java-graphql/components/graphql-router/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:17 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/components/graphql-router/</guid>
+      <description>&lt;p&gt;This module provides RouteHandler and SchemaProvider interfaces and implement both GET and
+POST handlers for GraphQL.&lt;/p&gt;
+
+&lt;p&gt;The router is a HandlerProvider and it needs to be put into file
+/src/main/resources/META-INF/services/com.networknt.server.HandlerProvider
+in your GraphQL API/service.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/networknt/light-java-example/blob/master/graphql/mutation/src/main/resources/META-INF/services/com.networknt.server.HandlerProvider&#34;&gt;link&lt;/a&gt;
+is an example.&lt;/p&gt;
+
+&lt;p&gt;The user developed schema needs to be hooked to the GraphqlPostHandler in this module through
+SchemaProvider interface. The SPI config file should be located at
+/src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/networknt/light-java-example/blob/master/graphql/mutation/src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider&#34;&gt;link&lt;/a&gt;
+is an example.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Common</title>
+      <link>https://networknt.github.io/light-java-graphql/components/graphql-common/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:02 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/components/graphql-common/</guid>
+      <description>&lt;p&gt;This module controls the configuration for GraphQL service and share some static variables
+with other modules to make the dependencies much simpler.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of graphql.yml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# GraphQL configuration
+---
+# The path of GraphQL endpoint for both GET and POST
+path: /graphql
+
+# Enable GraphiQL for development environment only. It will allow you to test from your Browser.
+enableGraphiQL: true
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Light Java GraphQL Components</title>
+      <link>https://networknt.github.io/light-java-graphql/components/</link>
+      <pubDate>Mon, 27 Mar 2017 14:22:04 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-java-graphql/components/</guid>
+      <description>
+
+&lt;h2 id=&#34;common-components&#34;&gt;Common Components&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[graphql-common]()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[graphql-router]()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;middleware-handlers&#34;&gt;Middleware Handlers&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[graphql-security]()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[graphql-validator]()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Light Java GraphQL</title>
       <link>https://networknt.github.io/light-java-graphql/</link>
       <pubDate>Sun, 26 Mar 2017 21:03:44 -0400</pubDate>
       
       <guid>https://networknt.github.io/light-java-graphql/</guid>
-      <description></description>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java&#34;&gt;Light Java&lt;/a&gt; is a framework built on top
+of Undertow core HTTP server that addresses all the cross-cutting concerns for
+microservices in the request and response chain. &lt;a href=&#34;https://github.com/networknt/light-java-rest&#34;&gt;Light Java REST&lt;/a&gt;
+is built on top of Light Java and focuses on RESTful services with OpenAPI
+specification loaded at runtime to drive security and validation. &lt;a href=&#34;https://github.com/networknt/light-java-graphql&#34;&gt;Light Java GraphQL&lt;/a&gt;
+is based on Light Java and is our solution for &lt;a href=&#34;http://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; services.&lt;/p&gt;
+
+&lt;p&gt;With Light Java GraphQL, developers can only focus on Schema development and the rest
+of the functionalities are provided by the framework. These includes:&lt;/p&gt;
+
+&lt;h3 id=&#34;common-components&#34;&gt;Common Components:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/server/&#34;&gt;server&lt;/a&gt; is
+a framework on top of Undertow http core that support plugins to perform
+different middleware handlers. It is light-weight, fast and supports HTTP/2.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/config/&#34;&gt;config&lt;/a&gt; is a module that
+supports externalized yml/yaml/json configuration for standalone applications and
+docker containers managed by Kubernetes. Config files are managed by
+&lt;a href=&#34;https://github.com/networknt/light-config-server&#34;&gt;light-config-server&lt;/a&gt; and mapped
+to Kubernetes ConfigMap and Secrets.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/utility/&#34;&gt;utility&lt;/a&gt; contains utility
+classes and static variables that are shared between modules.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/client/&#34;&gt;client&lt;/a&gt; is a wrapper of
+apache HttpClient and HttpAsyncClient. It supports automatically cache and
+renew client credentials JWT tokens and manages connection pooling. It is also
+responsible for passing correlationId and traceabilityId to the next service.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/info/&#34;&gt;info&lt;/a&gt; is a handler that
+injects an endpoint /server/info to all server instances so that light-portal
+can pull the info to certify all the enabled components and their configuration
+at runtime. It also helps while debugging issues on the server.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/mask/&#34;&gt;mask&lt;/a&gt; is used to mask
+sensitive info before logging.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/status/&#34;&gt;status&lt;/a&gt; is used to model
+error http response and assist production monitoring with unique error code.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/status/&#34;&gt;security&lt;/a&gt; is used by
+swagger-security and graphql-security currently but these utilities and helpers can
+be used by other security handlers for Role-Based or Attribute-Based Authorization.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/balance/&#34;&gt;balance&lt;/a&gt; is a load balance
+module that is used by cluster module with service discovery module. It will be called
+from client module and be part of client side discovery.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/cluster/&#34;&gt;cluster&lt;/a&gt; ia a module caches
+discovered services and calling load balance module for load balancing. Part of client
+side discovery.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/consul/&#34;&gt;consul&lt;/a&gt; is a module manages
+communication with Consul server for registry and discovery.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/handler/&#34;&gt;handler&lt;/a&gt; is a module defines
+middleware handler interface for all middleware components.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/health/&#34;&gt;Health&lt;/a&gt; is a health check module
+that can be called by API portal to determine if the service is healthy. It supports
+cascade health check for databases or message queues.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/registry/&#34;&gt;registry&lt;/a&gt; ia an interface
+definition and generic direct registry implementation for service registry and discovery.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/service/&#34;&gt;service&lt;/a&gt; is a light weight
+dependency injection framework for testing and startup hooks.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/switcher/&#34;&gt;switcher&lt;/a&gt; is a switcher that
+turns things on and off based on certain conditions.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/zookeeper/&#34;&gt;zookeeper&lt;/a&gt; is a module manages
+communication with ZooKeeper server for service registry and discovery.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;middleware-handlers&#34;&gt;Middleware Handlers&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/audit/&#34;&gt;audit&lt;/a&gt; logs most important info
+about request and response into audit.log in JSON format with config file that controls which
+fieds to be logged.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/body/&#34;&gt;body&lt;/a&gt; is a body parser middleware
+that is responsible for parsing the content of the request based on Content-Type in the
+request header.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/exception/&#34;&gt;exception&lt;/a&gt; is a generic
+exception handler that handles runtime exception, ApiException and other checked exception
+if they are not handled properly in the handler chain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/metrics/&#34;&gt;metrics&lt;/a&gt; is a module that collects
+API runtime info based on clientId and API name. The metrics info is sent to InfluxDB and
+accessible from Grafana Dashboard.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/sanitizer/&#34;&gt;sanitizer&lt;/a&gt; is a
+middleware that address cross site scripting concerns. It encodes header and body based on
+configuration.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/correlation/&#34;&gt;correlation&lt;/a&gt; generates
+a UUID in the first API/service and pass it to all other APIs/services in the call tree for
+tracking purpose.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/traceability/&#34;&gt;traceability&lt;/a&gt; is an
+id passed in from client and will be unique with an application context. The id will be passed
+into the backend and return to the consumer for transaction tracing.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/cors/&#34;&gt;cors&lt;/a&gt; is a module handles
+Cross-Origin Resource Sharing (CORS) pre-flight OPTIONS to support single page applications
+from another domain to access APIs/services.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/dump/&#34;&gt;dump&lt;/a&gt; is a full request/response
+log handler to dump everything regarding to request and response into log file for developers.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/limit/&#34;&gt;limit&lt;/a&gt; is a rate limiting handler
+to limit number of concurrent requests on the server. Once the limit is reached, subsequent
+requests will be queued for later execution. The size of the queue is configurable.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;graphql-specific-components&#34;&gt;GraphQL Specific Components&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[graphql-common]()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[graphql-router]()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;graphql-specific-middleware-handlers&#34;&gt;GraphQL Specific Middleware Handlers&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[graphql-security]()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[graphql-validator]()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>
