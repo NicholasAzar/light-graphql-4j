@@ -559,8 +559,6 @@ GraphQL componnent.&lt;/p&gt;&lt;/li&gt;
       <guid>https://networknt.github.io/light-java-graphql/</guid>
       <description>
 
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java&#34;&gt;Light Java&lt;/a&gt; is a framework built on top
 of Undertow core HTTP server that addresses all the cross-cutting concerns for
 microservices in the request and response chain. &lt;a href=&#34;https://github.com/networknt/light-java-rest&#34;&gt;Light Java REST&lt;/a&gt;
