@@ -11,21 +11,184 @@
     <atom:link href="https://networknt.github.io/light-java-graphql/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>relaytodo</title>
+      <title>Relay Todo</title>
       <link>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:38 -0400</pubDate>
       
       <guid>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;Relay Todo is built on top of mutation example with the following changes.&lt;/p&gt;
+
+&lt;h3 id=&#34;pom-xml&#34;&gt;pom.xml&lt;/h3&gt;
+
+&lt;p&gt;Only artifact and name are changed.&lt;/p&gt;
+
+&lt;h3 id=&#34;schemaprovider&#34;&gt;SchemaProvider&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;com.networknt.schema.TodoSchema
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;todoschema&#34;&gt;TodoSchema&lt;/h3&gt;
+
+&lt;p&gt;There are several files to support Todo schema and they are located at&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;relay-react-app&#34;&gt;Relay React App&lt;/h3&gt;
+
+&lt;p&gt;The client app is located at&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/app&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/app&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;start-servers-and-test&#34;&gt;Start servers and test&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo&#34;&gt;README.md&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
-      <title>mutation</title>
+      <title>Mutation</title>
       <link>https://networknt.github.io/light-java-graphql/tutorials/mutation/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:23 -0400</pubDate>
       
       <guid>https://networknt.github.io/light-java-graphql/tutorials/mutation/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;Mutation is modified from hello example and the following files are updated.&lt;/p&gt;
+
+&lt;h3 id=&#34;pom-xml&#34;&gt;pom.xml&lt;/h3&gt;
+
+&lt;p&gt;Only artifact and name are changed.&lt;/p&gt;
+
+&lt;h3 id=&#34;schemaprovider&#34;&gt;SchemaProvider&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;com.networknt.schema.MutationSchema
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;mutationschema&#34;&gt;MutationSchema&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;package com.networknt.schema;
+
+import com.networknt.graphql.router.SchemaProvider;
+import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
+import graphql.schema.GraphQLObjectType;
+import graphql.schema.GraphQLSchema;
+
+import static graphql.Scalars.GraphQLInt;
+import static graphql.Scalars.GraphQLString;
+import static graphql.schema.GraphQLArgument.newArgument;
+import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
+import static graphql.schema.GraphQLObjectType.newObject;
+
+/**
+ * Created by steve on 25/03/17.
+ */
+public class MutationSchema implements SchemaProvider {
+    public static class NumberHolder {
+        int theNumber;
+
+        public NumberHolder(int theNumber) {
+            this.theNumber = theNumber;
+        }
+
+        public int getTheNumber() {
+            return theNumber;
+        }
+
+        public void setTheNumber(int theNumber) {
+            this.theNumber = theNumber;
+        }
+
+
+    }
+
+    public static class Root {
+        NumberHolder numberHolder;
+
+        public Root(int number) {
+            this.numberHolder = new NumberHolder(number);
+        }
+
+        public NumberHolder changeNumber(int newNumber) {
+            this.numberHolder.theNumber = newNumber;
+            return this.numberHolder;
+        }
+
+
+        public NumberHolder failToChangeTheNumber(int newNumber) {
+            throw new RuntimeException(&amp;quot;Cannot change the number&amp;quot;);
+        }
+    }
+
+    public static Root root = new Root(6);
+
+    public static GraphQLObjectType numberHolderType = GraphQLObjectType.newObject()
+            .name(&amp;quot;NumberHolder&amp;quot;)
+            .field(newFieldDefinition()
+                    .name(&amp;quot;theNumber&amp;quot;)
+                    .type(GraphQLInt))
+            .build();
+
+    public static GraphQLObjectType queryType = GraphQLObjectType.newObject()
+            .name(&amp;quot;queryType&amp;quot;)
+            .field(newFieldDefinition()
+                    .name(&amp;quot;numberHolder&amp;quot;)
+                    .dataFetcher(new DataFetcher() {
+                        @Override
+                        public Object get(DataFetchingEnvironment environment) {
+                            return root.numberHolder;
+                        }
+                    })
+                    .type(numberHolderType))
+            .build();
+
+    public static GraphQLObjectType mutationType = GraphQLObjectType.newObject()
+            .name(&amp;quot;mutationType&amp;quot;)
+            .field(newFieldDefinition()
+                    .name(&amp;quot;changeTheNumber&amp;quot;)
+                    .type(numberHolderType)
+                    .argument(newArgument()
+                            .name(&amp;quot;newNumber&amp;quot;)
+                            .type(GraphQLInt))
+                    .dataFetcher(new DataFetcher() {
+                        @Override
+                        public Object get(DataFetchingEnvironment environment) {
+                            Integer newNumber = environment.getArgument(&amp;quot;newNumber&amp;quot;);
+                            return root.changeNumber(newNumber);
+                        }
+                    }))
+            .field(newFieldDefinition()
+                    .name(&amp;quot;failToChangeTheNumber&amp;quot;)
+                    .type(numberHolderType)
+                    .argument(newArgument()
+                            .name(&amp;quot;newNumber&amp;quot;)
+                            .type(GraphQLInt))
+                    .dataFetcher(new DataFetcher() {
+                        @Override
+                        public Object get(DataFetchingEnvironment environment) {
+                            Integer newNumber = environment.getArgument(&amp;quot;newNumber&amp;quot;);
+                            return root.failToChangeTheNumber(newNumber);
+                        }
+                    }))
+            .build();
+
+    @Override
+    public GraphQLSchema getSchema() {
+        return GraphQLSchema.newSchema()
+                .query(queryType)
+                .mutation(mutationType)
+                .build();
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;start-server-and-test&#34;&gt;Start server and test&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/mutation&#34;&gt;README.md&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -34,12 +197,139 @@
       <pubDate>Mon, 27 Mar 2017 17:05:10 -0400</pubDate>
       
       <guid>https://networknt.github.io/light-java-graphql/tutorials/hello/</guid>
-      <description>&lt;p&gt;This is the first example application and the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/hello&#34;&gt;README.md&lt;/a&gt;
+      <description>
+
+&lt;p&gt;This is the first example application and the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/hello&#34;&gt;README.md&lt;/a&gt;
 shows how to use it.&lt;/p&gt;
 
 &lt;p&gt;Unlike &lt;a href=&#34;https://github.com/networknt/light-java-rest&#34;&gt;light-java-rest&lt;/a&gt; has a &lt;a href=&#34;https://github.com/networknt/swagger-codegen&#34;&gt;swagger-codegen&lt;/a&gt;
 to generate the project, we have to construct the project based on the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/petstore&#34;&gt;petstore&lt;/a&gt;
 example and modify some files for GraphQL.&lt;/p&gt;
+
+&lt;p&gt;File changed:&lt;/p&gt;
+
+&lt;h3 id=&#34;pom-xml&#34;&gt;pom.xml&lt;/h3&gt;
+
+&lt;p&gt;The artifact and name of the project are changed. Also, add graphql-java as dependency.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        &amp;lt;version.light-java-graphql&amp;gt;1.2.6&amp;lt;/version.light-java-graphql&amp;gt;
+        &amp;lt;version.graphql&amp;gt;2.3.0&amp;lt;/version.graphql&amp;gt;
+
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;graphql-common&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;graphql-router&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;graphql-security&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;graphql-validator&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.graphql-java&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;graphql-java&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${version.graphql}&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Remove all the dependencies with swagger-xxx.&lt;/p&gt;
+
+&lt;h3 id=&#34;schemaprovider&#34;&gt;SchemaProvider&lt;/h3&gt;
+
+&lt;p&gt;Create a file /src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;com.networknt.schema.HelloSchema
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is the only file that you need to change if you start another project with another schema.&lt;/p&gt;
+
+&lt;h3 id=&#34;middlewarehandler&#34;&gt;MiddlewareHandler&lt;/h3&gt;
+
+&lt;p&gt;Update /src/main/resources/META-INF/services/com.networknt.handler.MiddlewareHandler&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# This file is generated and should not be changed unless you want to plug in more handlers into the handler chain
+# for cross cutting concerns. In most cases, you should replace some of the default handlers with your own implementation
+# Please note: the sequence of these handlers are very important.
+
+#Validator Validate request based on swagger specification (depending on Swagger and Body)
+com.networknt.graphql.validator.ValidatorHandler
+#Sanitizer Encode cross site scripting
+com.networknt.sanitizer.SanitizerHandler
+#SimpleAudit Log important info about the request into audit log
+com.networknt.audit.AuditHandler
+#Security JWT token verification and scope verification for GraphQL
+com.networknt.graphql.security.JwtVerifyHandler
+#Correlation Create correlationId if it doesn&#39;t exist in the request header and put it into the request header
+com.networknt.correlation.CorrelationHandler
+#Traceability Put traceabilityId into response header from request header if it exists
+com.networknt.traceability.TraceabilityHandler
+#Metrics In order to calculate response time accurately, this needs to be the second.
+com.networknt.metrics.MetricsHandler
+#Exception Global exception handler that needs to be called first.
+com.networknt.exception.ExceptionHandler
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, swagger related handlers are removed and replaced with graphql handlers.&lt;/p&gt;
+
+&lt;h3 id=&#34;handlerprovider&#34;&gt;HandlerProvider&lt;/h3&gt;
+
+&lt;p&gt;Update /src/main/resources/META-INF/services/com.networknt.server.HandlerProvider&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;com.networknt.graphql.router.GraphqlRouter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;schema&#34;&gt;Schema&lt;/h3&gt;
+
+&lt;p&gt;Create HelloSchema.java in src/main/java/com/networknt/schema/&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package com.networknt.schema;
+
+import com.networknt.graphql.router.SchemaProvider;
+import graphql.schema.GraphQLObjectType;
+import graphql.schema.GraphQLSchema;
+
+import static graphql.Scalars.GraphQLString;
+import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
+import static graphql.schema.GraphQLObjectType.newObject;
+
+/**
+ * Created by steve on 25/03/17.
+ */
+public class HelloSchema implements SchemaProvider {
+    @Override
+    public GraphQLSchema getSchema() {
+        GraphQLObjectType queryType = newObject()
+                .name(&amp;quot;helloWorldQuery&amp;quot;)
+                .field(newFieldDefinition()
+                        .type(GraphQLString)
+                        .name(&amp;quot;hello&amp;quot;)
+                        .staticValue(&amp;quot;world&amp;quot;))
+                .build();
+
+        return GraphQLSchema.newSchema()
+                .query(queryType)
+                .build();
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;start-server-and-test&#34;&gt;Start Server and Test&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/hello&#34;&gt;README.md&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

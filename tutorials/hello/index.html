@@ -355,12 +355,139 @@
 		<div class="wrapper">
 			<h1>Hello World Tutorial </h1>
 
-			<p>This is the first example application and the <a href="https://github.com/networknt/light-java-example/tree/master/graphql/hello">README.md</a>
+			
+
+<p>This is the first example application and the <a href="https://github.com/networknt/light-java-example/tree/master/graphql/hello">README.md</a>
 shows how to use it.</p>
 
 <p>Unlike <a href="https://github.com/networknt/light-java-rest">light-java-rest</a> has a <a href="https://github.com/networknt/swagger-codegen">swagger-codegen</a>
 to generate the project, we have to construct the project based on the <a href="https://github.com/networknt/light-java-example/tree/master/petstore">petstore</a>
 example and modify some files for GraphQL.</p>
+
+<p>File changed:</p>
+
+<h3 id="pom-xml">pom.xml</h3>
+
+<p>The artifact and name of the project are changed. Also, add graphql-java as dependency.</p>
+
+<pre><code>        &lt;version.light-java-graphql&gt;1.2.6&lt;/version.light-java-graphql&gt;
+        &lt;version.graphql&gt;2.3.0&lt;/version.graphql&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.networknt&lt;/groupId&gt;
+            &lt;artifactId&gt;graphql-common&lt;/artifactId&gt;
+            &lt;version&gt;${version.light-java-graphql}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.networknt&lt;/groupId&gt;
+            &lt;artifactId&gt;graphql-router&lt;/artifactId&gt;
+            &lt;version&gt;${version.light-java-graphql}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.networknt&lt;/groupId&gt;
+            &lt;artifactId&gt;graphql-security&lt;/artifactId&gt;
+            &lt;version&gt;${version.light-java-graphql}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.networknt&lt;/groupId&gt;
+            &lt;artifactId&gt;graphql-validator&lt;/artifactId&gt;
+            &lt;version&gt;${version.light-java-graphql}&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.graphql-java&lt;/groupId&gt;
+            &lt;artifactId&gt;graphql-java&lt;/artifactId&gt;
+            &lt;version&gt;${version.graphql}&lt;/version&gt;
+        &lt;/dependency&gt;
+
+</code></pre>
+
+<p>Remove all the dependencies with swagger-xxx.</p>
+
+<h3 id="schemaprovider">SchemaProvider</h3>
+
+<p>Create a file /src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider</p>
+
+<pre><code>com.networknt.schema.HelloSchema
+</code></pre>
+
+<p>This is the only file that you need to change if you start another project with another schema.</p>
+
+<h3 id="middlewarehandler">MiddlewareHandler</h3>
+
+<p>Update /src/main/resources/META-INF/services/com.networknt.handler.MiddlewareHandler</p>
+
+<pre><code># This file is generated and should not be changed unless you want to plug in more handlers into the handler chain
+# for cross cutting concerns. In most cases, you should replace some of the default handlers with your own implementation
+# Please note: the sequence of these handlers are very important.
+
+#Validator Validate request based on swagger specification (depending on Swagger and Body)
+com.networknt.graphql.validator.ValidatorHandler
+#Sanitizer Encode cross site scripting
+com.networknt.sanitizer.SanitizerHandler
+#SimpleAudit Log important info about the request into audit log
+com.networknt.audit.AuditHandler
+#Security JWT token verification and scope verification for GraphQL
+com.networknt.graphql.security.JwtVerifyHandler
+#Correlation Create correlationId if it doesn't exist in the request header and put it into the request header
+com.networknt.correlation.CorrelationHandler
+#Traceability Put traceabilityId into response header from request header if it exists
+com.networknt.traceability.TraceabilityHandler
+#Metrics In order to calculate response time accurately, this needs to be the second.
+com.networknt.metrics.MetricsHandler
+#Exception Global exception handler that needs to be called first.
+com.networknt.exception.ExceptionHandler
+
+</code></pre>
+
+<p>As you can see, swagger related handlers are removed and replaced with graphql handlers.</p>
+
+<h3 id="handlerprovider">HandlerProvider</h3>
+
+<p>Update /src/main/resources/META-INF/services/com.networknt.server.HandlerProvider</p>
+
+<pre><code>com.networknt.graphql.router.GraphqlRouter
+</code></pre>
+
+<h3 id="schema">Schema</h3>
+
+<p>Create HelloSchema.java in src/main/java/com/networknt/schema/</p>
+
+<pre><code>package com.networknt.schema;
+
+import com.networknt.graphql.router.SchemaProvider;
+import graphql.schema.GraphQLObjectType;
+import graphql.schema.GraphQLSchema;
+
+import static graphql.Scalars.GraphQLString;
+import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
+import static graphql.schema.GraphQLObjectType.newObject;
+
+/**
+ * Created by steve on 25/03/17.
+ */
+public class HelloSchema implements SchemaProvider {
+    @Override
+    public GraphQLSchema getSchema() {
+        GraphQLObjectType queryType = newObject()
+                .name(&quot;helloWorldQuery&quot;)
+                .field(newFieldDefinition()
+                        .type(GraphQLString)
+                        .name(&quot;hello&quot;)
+                        .staticValue(&quot;world&quot;))
+                .build();
+
+        return GraphQLSchema.newSchema()
+                .query(queryType)
+                .build();
+    }
+}
+
+</code></pre>
+
+<h3 id="start-server-and-test">Start Server and Test</h3>
+
+<p>See <a href="https://github.com/networknt/light-java-example/tree/master/graphql/hello">README.md</a></p>
 
 
 			<aside class="copyright" role="note">
@@ -379,7 +506,7 @@ example and modify some files for GraphQL.</p>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-java-graphql/tutorials/mutation/" title="mutation">
+      <a href="https://networknt.github.io/light-java-graphql/tutorials/mutation/" title="Mutation">
         <span class="direction">
           Previous
         </span>
@@ -389,7 +516,7 @@ example and modify some files for GraphQL.</p>
           </div>
           <div class="stretch">
             <div class="title">
-              mutation
+              Mutation
             </div>
           </div>
         </div>
