@@ -2,11 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/</loc>
-    <lastmod>2017-03-27T17:05:38-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</loc>
     <lastmod>2017-03-27T17:05:38-04:00</lastmod>
   </url>
@@ -67,8 +62,50 @@
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/</loc>
+    <loc>https://networknt.github.io/light-java-graphql/introduction/</loc>
     <lastmod>2017-03-26T21:03:44-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/components/</loc>
+    <lastmod>2017-03-27T14:25:32-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/getting-started/</loc>
+    <lastmod>2017-03-27T16:03:12-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/introduction/</loc>
+    <lastmod>2017-03-26T21:03:44-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/</loc>
+    <lastmod>2017-03-27T17:05:38-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/roadmap/</loc>
+    <lastmod>2017-03-27T15:45:30-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/tools/</loc>
+    <lastmod>2017-03-27T16:03:51-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-java-graphql/tutorials/</loc>
+    <lastmod>2017-03-27T17:05:38-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
