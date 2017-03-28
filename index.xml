@@ -697,7 +697,7 @@ verifies JWT token in request header and verifies scopes if it is enabled.&lt;/p
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-validator/&#34;&gt;graphql-validator&lt;/a&gt;
 validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL componnent.&lt;/p&gt;&lt;/li&gt;
+GraphQL component.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
