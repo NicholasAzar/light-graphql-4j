@@ -357,15 +357,15 @@ public class HelloSchema implements SchemaProvider {
 
 &lt;p&gt;There are three tutorials in the example &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;folder&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;hello&#34;&gt;Hello&lt;/h2&gt;
+&lt;h2 id=&#34;hello-https-networknt-github-io-light-java-graphql-tutorials-hello&#34;&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/tutorials/hello/&#34;&gt;Hello&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;This is a very simple Hello World query to show you how to get GraphQL up and running.&lt;/p&gt;
 
-&lt;h2 id=&#34;mutation&#34;&gt;Mutation&lt;/h2&gt;
+&lt;h2 id=&#34;mutation-https-networknt-github-io-light-java-graphql-tutorials-mutation&#34;&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/tutorials/mutation/&#34;&gt;Mutation&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;This example shows you how to create a full blown GraphQL service with both query and mutation.&lt;/p&gt;
 
-&lt;h2 id=&#34;relay-todo&#34;&gt;Relay Todo&lt;/h2&gt;
+&lt;h2 id=&#34;relay-todo-https-networknt-github-io-light-java-graphql-tutorials-relaytodo&#34;&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/tutorials/relaytodo/&#34;&gt;Relay Todo&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;This is to show you how to build a GraphQL service that is working with Relayjs.&lt;/p&gt;
 </description>
