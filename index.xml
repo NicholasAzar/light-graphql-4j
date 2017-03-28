@@ -569,7 +569,7 @@ is based on Light Java and is our solution for &lt;a href=&#34;http://graphql.or
 &lt;p&gt;With Light Java GraphQL, developers can only focus on Schema development and the rest
 of the functionalities are provided by the framework. These includes:&lt;/p&gt;
 
-&lt;h3 id=&#34;common-components&#34;&gt;Common Components:&lt;/h3&gt;
+&lt;h3 id=&#34;common-components&#34;&gt;Common Components&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/server/&#34;&gt;server&lt;/a&gt; is
