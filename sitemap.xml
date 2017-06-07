@@ -2,108 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tutorials/relaytodo/</loc>
     <lastmod>2017-03-27T17:05:38-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tutorials/mutation/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tutorials/mutation/</loc>
     <lastmod>2017-03-27T17:05:23-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tutorials/hello/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tutorials/hello/</loc>
     <lastmod>2017-03-27T17:05:10-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tools/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tools/</loc>
     <lastmod>2017-03-27T16:03:51-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tutorials/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tutorials/</loc>
     <lastmod>2017-03-27T16:03:38-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/getting-started/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/getting-started/</loc>
     <lastmod>2017-03-27T16:03:12-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/roadmap/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/roadmap/</loc>
     <lastmod>2017-03-27T15:45:30-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/components/graphql-validator/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/components/graphql-validator/</loc>
     <lastmod>2017-03-27T14:25:32-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/components/graphql-security/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/components/graphql-security/</loc>
     <lastmod>2017-03-27T14:25:26-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/components/graphql-router/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/components/graphql-router/</loc>
     <lastmod>2017-03-27T14:25:17-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/components/graphql-common/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/components/graphql-common/</loc>
     <lastmod>2017-03-27T14:25:02-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/components/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/components/</loc>
     <lastmod>2017-03-27T14:22:04-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/introduction/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/introduction/</loc>
     <lastmod>2017-03-26T21:03:44-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/components/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-graphql-4j/components/</loc>
     <lastmod>2017-03-27T14:25:32-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/getting-started/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/getting-started/</loc>
     <lastmod>2017-03-27T16:03:12-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/introduction/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/introduction/</loc>
     <lastmod>2017-03-26T21:03:44-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/</loc>
     <lastmod>2017-03-27T17:05:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/roadmap/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/roadmap/</loc>
     <lastmod>2017-03-27T15:45:30-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tools/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://networknt.github.io/light-graphql-4j/tools/</loc>
     <lastmod>2017-03-27T16:03:51-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-java-graphql/tutorials/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/tutorials/</loc>
     <lastmod>2017-03-27T17:05:38-04:00</lastmod>
     <priority>0</priority>
   </url>

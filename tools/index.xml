@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tools on Light Java GraphQL - A GraphQL framework built on top of Light-Java</title>
-    <link>https://networknt.github.io/light-java-graphql/tools/index.xml</link>
-    <description>Recent content in Tools on Light Java GraphQL - A GraphQL framework built on top of Light-Java</description>
+    <title>Tools on Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <link>https://networknt.github.io/light-graphql-4j/tools/</link>
+    <description>Recent content in Tools on Light GraphQL 4J - A GraphQL framework built on top of light-4j</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Mon, 27 Mar 2017 16:03:51 -0400</lastBuildDate>
-    <atom:link href="https://networknt.github.io/light-java-graphql/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://networknt.github.io/light-graphql-4j/tools/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Tools</title>
-      <link>https://networknt.github.io/light-java-graphql/tools/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tools/</link>
       <pubDate>Mon, 27 Mar 2017 16:03:51 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/tools/</guid>
-      <description>&lt;p&gt;The most useful tool is the GraphiQL application that is served at&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://localhost:8080/graphql&#34;&gt;http://localhost:8080/graphql&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For more information about this tool, please check this &lt;a href=&#34;https://github.com/graphql/graphiql&#34;&gt;site&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/tools/</guid>
+      <description>The most useful tool is the GraphiQL application that is served at
+http://localhost:8080/graphql
+For more information about this tool, please check this site.</description>
     </item>
     
   </channel>

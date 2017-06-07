@@ -1,705 +1,170 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Light Java GraphQL - A GraphQL framework built on top of Light-Java</title>
-    <link>https://networknt.github.io/light-java-graphql/index.xml</link>
-    <description>Recent content on Light Java GraphQL - A GraphQL framework built on top of Light-Java</description>
+    <title>Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <link>https://networknt.github.io/light-graphql-4j/</link>
+    <description>Recent content on Light GraphQL 4J - A GraphQL framework built on top of light-4j</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Mon, 27 Mar 2017 17:05:38 -0400</lastBuildDate>
-    <atom:link href="https://networknt.github.io/light-java-graphql/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://networknt.github.io/light-graphql-4j/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Relay Todo</title>
-      <link>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorials/relaytodo/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:38 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/tutorials/relaytodo/</guid>
-      <description>
-
-&lt;p&gt;Relay Todo is built on top of mutation example with the following changes.&lt;/p&gt;
-
-&lt;h3 id=&#34;pom-xml&#34;&gt;pom.xml&lt;/h3&gt;
-
-&lt;p&gt;Only artifact and name are changed.&lt;/p&gt;
-
-&lt;h3 id=&#34;schemaprovider&#34;&gt;SchemaProvider&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;com.networknt.schema.TodoSchema
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;todoschema&#34;&gt;TodoSchema&lt;/h3&gt;
-
-&lt;p&gt;There are several files to support Todo schema and they are located at&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;relay-react-app&#34;&gt;Relay React App&lt;/h3&gt;
-
-&lt;p&gt;The client app is located at&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/app&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo/app&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;start-servers-and-test&#34;&gt;Start servers and test&lt;/h3&gt;
-
-&lt;p&gt;See &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/relaytodo&#34;&gt;README.md&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorials/relaytodo/</guid>
+      <description>Relay Todo is built on top of mutation example with the following changes.
+pom.xml Only artifact and name are changed.
+SchemaProvider com.networknt.schema.TodoSchema  TodoSchema There are several files to support Todo schema and they are located at
+https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema
+Relay React App The client app is located at
+https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/app
+Start servers and test See README.md</description>
     </item>
     
     <item>
       <title>Mutation</title>
-      <link>https://networknt.github.io/light-java-graphql/tutorials/mutation/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorials/mutation/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:23 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/tutorials/mutation/</guid>
-      <description>
-
-&lt;p&gt;Mutation is modified from hello example and the following files are updated.&lt;/p&gt;
-
-&lt;h3 id=&#34;pom-xml&#34;&gt;pom.xml&lt;/h3&gt;
-
-&lt;p&gt;Only artifact and name are changed.&lt;/p&gt;
-
-&lt;h3 id=&#34;schemaprovider&#34;&gt;SchemaProvider&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;com.networknt.schema.MutationSchema
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;mutationschema&#34;&gt;MutationSchema&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;package com.networknt.schema;
-
-import com.networknt.graphql.router.SchemaProvider;
-import graphql.schema.DataFetcher;
-import graphql.schema.DataFetchingEnvironment;
-import graphql.schema.GraphQLObjectType;
-import graphql.schema.GraphQLSchema;
-
-import static graphql.Scalars.GraphQLInt;
-import static graphql.Scalars.GraphQLString;
-import static graphql.schema.GraphQLArgument.newArgument;
-import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
-import static graphql.schema.GraphQLObjectType.newObject;
-
-/**
- * Created by steve on 25/03/17.
- */
-public class MutationSchema implements SchemaProvider {
-    public static class NumberHolder {
-        int theNumber;
-
-        public NumberHolder(int theNumber) {
-            this.theNumber = theNumber;
-        }
-
-        public int getTheNumber() {
-            return theNumber;
-        }
-
-        public void setTheNumber(int theNumber) {
-            this.theNumber = theNumber;
-        }
-
-
-    }
-
-    public static class Root {
-        NumberHolder numberHolder;
-
-        public Root(int number) {
-            this.numberHolder = new NumberHolder(number);
-        }
-
-        public NumberHolder changeNumber(int newNumber) {
-            this.numberHolder.theNumber = newNumber;
-            return this.numberHolder;
-        }
-
-
-        public NumberHolder failToChangeTheNumber(int newNumber) {
-            throw new RuntimeException(&amp;quot;Cannot change the number&amp;quot;);
-        }
-    }
-
-    public static Root root = new Root(6);
-
-    public static GraphQLObjectType numberHolderType = GraphQLObjectType.newObject()
-            .name(&amp;quot;NumberHolder&amp;quot;)
-            .field(newFieldDefinition()
-                    .name(&amp;quot;theNumber&amp;quot;)
-                    .type(GraphQLInt))
-            .build();
-
-    public static GraphQLObjectType queryType = GraphQLObjectType.newObject()
-            .name(&amp;quot;queryType&amp;quot;)
-            .field(newFieldDefinition()
-                    .name(&amp;quot;numberHolder&amp;quot;)
-                    .dataFetcher(new DataFetcher() {
-                        @Override
-                        public Object get(DataFetchingEnvironment environment) {
-                            return root.numberHolder;
-                        }
-                    })
-                    .type(numberHolderType))
-            .build();
-
-    public static GraphQLObjectType mutationType = GraphQLObjectType.newObject()
-            .name(&amp;quot;mutationType&amp;quot;)
-            .field(newFieldDefinition()
-                    .name(&amp;quot;changeTheNumber&amp;quot;)
-                    .type(numberHolderType)
-                    .argument(newArgument()
-                            .name(&amp;quot;newNumber&amp;quot;)
-                            .type(GraphQLInt))
-                    .dataFetcher(new DataFetcher() {
-                        @Override
-                        public Object get(DataFetchingEnvironment environment) {
-                            Integer newNumber = environment.getArgument(&amp;quot;newNumber&amp;quot;);
-                            return root.changeNumber(newNumber);
-                        }
-                    }))
-            .field(newFieldDefinition()
-                    .name(&amp;quot;failToChangeTheNumber&amp;quot;)
-                    .type(numberHolderType)
-                    .argument(newArgument()
-                            .name(&amp;quot;newNumber&amp;quot;)
-                            .type(GraphQLInt))
-                    .dataFetcher(new DataFetcher() {
-                        @Override
-                        public Object get(DataFetchingEnvironment environment) {
-                            Integer newNumber = environment.getArgument(&amp;quot;newNumber&amp;quot;);
-                            return root.failToChangeTheNumber(newNumber);
-                        }
-                    }))
-            .build();
-
-    @Override
-    public GraphQLSchema getSchema() {
-        return GraphQLSchema.newSchema()
-                .query(queryType)
-                .mutation(mutationType)
-                .build();
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;start-server-and-test&#34;&gt;Start server and test&lt;/h3&gt;
-
-&lt;p&gt;See &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/mutation&#34;&gt;README.md&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorials/mutation/</guid>
+      <description>Mutation is modified from hello example and the following files are updated.
+pom.xml Only artifact and name are changed.
+SchemaProvider com.networknt.schema.MutationSchema  MutationSchema package com.networknt.schema; import com.networknt.graphql.router.SchemaProvider; import graphql.schema.DataFetcher; import graphql.schema.DataFetchingEnvironment; import graphql.schema.GraphQLObjectType; import graphql.schema.GraphQLSchema; import static graphql.Scalars.GraphQLInt; import static graphql.Scalars.GraphQLString; import static graphql.schema.GraphQLArgument.newArgument; import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition; import static graphql.schema.GraphQLObjectType.newObject; /** * Created by steve on 25/03/17. */ public class MutationSchema implements SchemaProvider { public static class NumberHolder { int theNumber; public NumberHolder(int theNumber) { this.</description>
     </item>
     
     <item>
       <title>Hello World Tutorial</title>
-      <link>https://networknt.github.io/light-java-graphql/tutorials/hello/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorials/hello/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:10 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/tutorials/hello/</guid>
-      <description>
-
-&lt;p&gt;This is the first example application and the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/hello&#34;&gt;README.md&lt;/a&gt;
-shows how to use it.&lt;/p&gt;
-
-&lt;p&gt;Unlike &lt;a href=&#34;https://github.com/networknt/light-java-rest&#34;&gt;light-java-rest&lt;/a&gt; has a &lt;a href=&#34;https://github.com/networknt/swagger-codegen&#34;&gt;swagger-codegen&lt;/a&gt;
-to generate the project, we have to construct the project based on the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/petstore&#34;&gt;petstore&lt;/a&gt;
-example and modify some files for GraphQL.&lt;/p&gt;
-
-&lt;p&gt;File changed:&lt;/p&gt;
-
-&lt;h3 id=&#34;pom-xml&#34;&gt;pom.xml&lt;/h3&gt;
-
-&lt;p&gt;The artifact and name of the project are changed. Also, add graphql-java as dependency.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;        &amp;lt;version.light-java-graphql&amp;gt;1.2.6&amp;lt;/version.light-java-graphql&amp;gt;
-        &amp;lt;version.graphql&amp;gt;2.3.0&amp;lt;/version.graphql&amp;gt;
-
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;graphql-common&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;graphql-router&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;graphql-security&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;graphql-validator&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.graphql-java&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;graphql-java&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;${version.graphql}&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Remove all the dependencies with swagger-xxx.&lt;/p&gt;
-
-&lt;h3 id=&#34;schemaprovider&#34;&gt;SchemaProvider&lt;/h3&gt;
-
-&lt;p&gt;Create a file /src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;com.networknt.schema.HelloSchema
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is the only file that you need to change if you start another project with another schema.&lt;/p&gt;
-
-&lt;h3 id=&#34;middlewarehandler&#34;&gt;MiddlewareHandler&lt;/h3&gt;
-
-&lt;p&gt;Update /src/main/resources/META-INF/services/com.networknt.handler.MiddlewareHandler&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# This file is generated and should not be changed unless you want to plug in more handlers into the handler chain
-# for cross cutting concerns. In most cases, you should replace some of the default handlers with your own implementation
-# Please note: the sequence of these handlers are very important.
-
-#Validator Validate request based on swagger specification (depending on Swagger and Body)
-com.networknt.graphql.validator.ValidatorHandler
-#Sanitizer Encode cross site scripting
-com.networknt.sanitizer.SanitizerHandler
-#SimpleAudit Log important info about the request into audit log
-com.networknt.audit.AuditHandler
-#Security JWT token verification and scope verification for GraphQL
-com.networknt.graphql.security.JwtVerifyHandler
-#Correlation Create correlationId if it doesn&#39;t exist in the request header and put it into the request header
-com.networknt.correlation.CorrelationHandler
-#Traceability Put traceabilityId into response header from request header if it exists
-com.networknt.traceability.TraceabilityHandler
-#Metrics In order to calculate response time accurately, this needs to be the second.
-com.networknt.metrics.MetricsHandler
-#Exception Global exception handler that needs to be called first.
-com.networknt.exception.ExceptionHandler
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see, swagger related handlers are removed and replaced with graphql handlers.&lt;/p&gt;
-
-&lt;h3 id=&#34;handlerprovider&#34;&gt;HandlerProvider&lt;/h3&gt;
-
-&lt;p&gt;Update /src/main/resources/META-INF/services/com.networknt.server.HandlerProvider&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;com.networknt.graphql.router.GraphqlRouter
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;schema&#34;&gt;Schema&lt;/h3&gt;
-
-&lt;p&gt;Create HelloSchema.java in src/main/java/com/networknt/schema/&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package com.networknt.schema;
-
-import com.networknt.graphql.router.SchemaProvider;
-import graphql.schema.GraphQLObjectType;
-import graphql.schema.GraphQLSchema;
-
-import static graphql.Scalars.GraphQLString;
-import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
-import static graphql.schema.GraphQLObjectType.newObject;
-
-/**
- * Created by steve on 25/03/17.
- */
-public class HelloSchema implements SchemaProvider {
-    @Override
-    public GraphQLSchema getSchema() {
-        GraphQLObjectType queryType = newObject()
-                .name(&amp;quot;helloWorldQuery&amp;quot;)
-                .field(newFieldDefinition()
-                        .type(GraphQLString)
-                        .name(&amp;quot;hello&amp;quot;)
-                        .staticValue(&amp;quot;world&amp;quot;))
-                .build();
-
-        return GraphQLSchema.newSchema()
-                .query(queryType)
-                .build();
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;start-server-and-test&#34;&gt;Start Server and Test&lt;/h3&gt;
-
-&lt;p&gt;See &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql/hello&#34;&gt;README.md&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorials/hello/</guid>
+      <description>This is the first example application and the README.md shows how to use it.
+Unlike light-rest-4j has a swagger-codegen to generate the project, we have to construct the project based on the petstore example and modify some files for GraphQL.
+File changed:
+pom.xml The artifact and name of the project are changed. Also, add graphql-java as dependency.
+ &amp;lt;version.light-java-graphql&amp;gt;1.2.6&amp;lt;/version.light-java-graphql&amp;gt; &amp;lt;version.graphql&amp;gt;2.3.0&amp;lt;/version.graphql&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;graphql-common&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;graphql-router&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>https://networknt.github.io/light-java-graphql/tools/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tools/</link>
       <pubDate>Mon, 27 Mar 2017 16:03:51 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/tools/</guid>
-      <description>&lt;p&gt;The most useful tool is the GraphiQL application that is served at&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://localhost:8080/graphql&#34;&gt;http://localhost:8080/graphql&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For more information about this tool, please check this &lt;a href=&#34;https://github.com/graphql/graphiql&#34;&gt;site&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/tools/</guid>
+      <description>The most useful tool is the GraphiQL application that is served at
+http://localhost:8080/graphql
+For more information about this tool, please check this site.</description>
     </item>
     
     <item>
       <title>Tutorials</title>
-      <link>https://networknt.github.io/light-java-graphql/tutorials/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorials/</link>
       <pubDate>Mon, 27 Mar 2017 16:03:38 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/tutorials/</guid>
-      <description>
-
-&lt;p&gt;There are three tutorials in the example &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;folder&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;hello-https-networknt-github-io-light-java-graphql-tutorials-hello&#34;&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/tutorials/hello/&#34;&gt;Hello&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;This is a very simple Hello World query to show you how to get GraphQL up and running.&lt;/p&gt;
-
-&lt;h2 id=&#34;mutation-https-networknt-github-io-light-java-graphql-tutorials-mutation&#34;&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/tutorials/mutation/&#34;&gt;Mutation&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;This example shows you how to create a full blown GraphQL service with both query and mutation.&lt;/p&gt;
-
-&lt;h2 id=&#34;relay-todo-https-networknt-github-io-light-java-graphql-tutorials-relaytodo&#34;&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/tutorials/relaytodo/&#34;&gt;Relay Todo&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;This is to show you how to build a GraphQL service that is working with Relayjs.&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorials/</guid>
+      <description>There are three tutorials in the example folder.
+Hello This is a very simple Hello World query to show you how to get GraphQL up and running.
+Mutation This example shows you how to create a full blown GraphQL service with both query and mutation.
+Relay Todo This is to show you how to build a GraphQL service that is working with Relayjs.</description>
     </item>
     
     <item>
       <title>Getting Started</title>
-      <link>https://networknt.github.io/light-java-graphql/getting-started/</link>
+      <link>https://networknt.github.io/light-graphql-4j/getting-started/</link>
       <pubDate>Mon, 27 Mar 2017 16:03:12 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/getting-started/</guid>
-      <description>&lt;p&gt;To get started, an easy way is to copy one of the examples and replace the schema with yours.&lt;/p&gt;
-
-&lt;p&gt;If you compare between the examples, the only difference is schema classes.&lt;/p&gt;
-
-&lt;p&gt;Here is the &lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;link&lt;/a&gt; to examples.&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/getting-started/</guid>
+      <description>To get started, an easy way is to copy one of the examples and replace the schema with yours.
+If you compare between the examples, the only difference is schema classes.
+Here is the link to examples.</description>
     </item>
     
     <item>
       <title>Roadmap</title>
-      <link>https://networknt.github.io/light-java-graphql/roadmap/</link>
+      <link>https://networknt.github.io/light-graphql-4j/roadmap/</link>
       <pubDate>Mon, 27 Mar 2017 15:45:30 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/roadmap/</guid>
-      <description>&lt;p&gt;The current framework is working and there are several examples can be found at&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java-example/tree/master/graphql&#34;&gt;https://github.com/networknt/light-java-example/tree/master/graphql&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;There are several things in mind to improved it.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Add fine-grained authorization&lt;/li&gt;
-&lt;li&gt;Write an example with database as data source.&lt;/li&gt;
-&lt;li&gt;Write an example with in-memory data grid as data source.&lt;/li&gt;
-&lt;li&gt;Example of accessing other services.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/roadmap/</guid>
+      <description>The current framework is working and there are several examples can be found at
+https://github.com/networknt/light-example-4j/tree/master/graphql
+There are several things in mind to improved it.
+ Add fine-grained authorization Write an example with database as data source. Write an example with in-memory data grid as data source. Example of accessing other services.  </description>
     </item>
     
     <item>
       <title>GraphQL Validator</title>
-      <link>https://networknt.github.io/light-java-graphql/components/graphql-validator/</link>
+      <link>https://networknt.github.io/light-graphql-4j/components/graphql-validator/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:32 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/components/graphql-validator/</guid>
-      <description>&lt;p&gt;Basic request validation for the graphql path and methods. It is the first line of
-validation right after graphql-security and it doesn&amp;rsquo;t have any knowledge about the
-graphql query parameter and body. Other schema based validation will be done at
-GraphQL level.&lt;/p&gt;
-
-&lt;p&gt;It shares the same configuration file with swagger-validator and here is an example.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Validate request/response for GraphQL request
----
-enabled: true
-enableResponseValidator: false
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-validator/</guid>
+      <description>Basic request validation for the graphql path and methods. It is the first line of validation right after graphql-security and it doesn&amp;rsquo;t have any knowledge about the graphql query parameter and body. Other schema based validation will be done at GraphQL level.
+It shares the same configuration file with swagger-validator and here is an example.
+# Validate request/response for GraphQL request --- enabled: true enableResponseValidator: false  </description>
     </item>
     
     <item>
       <title>GraphQL Security</title>
-      <link>https://networknt.github.io/light-java-graphql/components/graphql-security/</link>
+      <link>https://networknt.github.io/light-graphql-4j/components/graphql-security/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:26 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/components/graphql-security/</guid>
-      <description>&lt;p&gt;This module is very similar with swagger-security but as there is swagger specification
-we cannot verify scopes against specification. GraphQL recommend authorization outside
-of schema so that we can only verify query scope and mutation scope for read and write
-access.&lt;/p&gt;
-
-&lt;p&gt;This is the handler that should be put before graphql-validator. There is no need to
-do any validation if JWT token does not exist in the request header.&lt;/p&gt;
-
-&lt;p&gt;The module share the same security.yml and here is an example.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Security configuration in light framework.
----
-# Enable JWT verification flag.
-enableVerifyJwt: true
-
-# Enable JWT scope verification. Only valid when enableVerifyJwt is true.
-enableVerifyScope: true
-
-# User for test only. should be always be false on official environment.
-enableMockJwt: false
-
-# JWT signature public certificates. kid and certificate path mappings.
-jwt:
-  certificate:
-    &#39;100&#39;: oauth/primary.crt
-    &#39;101&#39;: oauth/secondary.crt
-  clockSkewInSeconds: 60
-
-# Enable or disable JWT token logging
-logJwtToken: true
-
-# Enable or disable client_id, user_id and scope logging.
-logClientUserScope: false
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-security/</guid>
+      <description>This module is very similar with swagger-security but as there is swagger specification we cannot verify scopes against specification. GraphQL recommend authorization outside of schema so that we can only verify query scope and mutation scope for read and write access.
+This is the handler that should be put before graphql-validator. There is no need to do any validation if JWT token does not exist in the request header.
+The module share the same security.</description>
     </item>
     
     <item>
       <title>GraphQL Router</title>
-      <link>https://networknt.github.io/light-java-graphql/components/graphql-router/</link>
+      <link>https://networknt.github.io/light-graphql-4j/components/graphql-router/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:17 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/components/graphql-router/</guid>
-      <description>&lt;p&gt;This module provides RouteHandler and SchemaProvider interfaces and implement both GET and
-POST handlers for GraphQL.&lt;/p&gt;
-
-&lt;p&gt;The router is a HandlerProvider and it needs to be put into file
-/src/main/resources/META-INF/services/com.networknt.server.HandlerProvider
-in your GraphQL API/service.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://github.com/networknt/light-java-example/blob/master/graphql/mutation/src/main/resources/META-INF/services/com.networknt.server.HandlerProvider&#34;&gt;link&lt;/a&gt;
-is an example.&lt;/p&gt;
-
-&lt;p&gt;The user developed schema needs to be hooked to the GraphqlPostHandler in this module through
-SchemaProvider interface. The SPI config file should be located at
-/src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://github.com/networknt/light-java-example/blob/master/graphql/mutation/src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider&#34;&gt;link&lt;/a&gt;
-is an example.&lt;/p&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-router/</guid>
+      <description>This module provides RouteHandler and SchemaProvider interfaces and implement both GET and POST handlers for GraphQL.
+The router is a HandlerProvider and it needs to be put into file /src/main/resources/META-INF/services/com.networknt.server.HandlerProvider in your GraphQL API/service.
+The link is an example.
+The user developed schema needs to be hooked to the GraphqlPostHandler in this module through SchemaProvider interface. The SPI config file should be located at /src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider
+The link is an example.</description>
     </item>
     
     <item>
       <title>GraphQL Common</title>
-      <link>https://networknt.github.io/light-java-graphql/components/graphql-common/</link>
+      <link>https://networknt.github.io/light-graphql-4j/components/graphql-common/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:02 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/components/graphql-common/</guid>
-      <description>&lt;p&gt;This module controls the configuration for GraphQL service and share some static variables
-with other modules to make the dependencies much simpler.&lt;/p&gt;
-
-&lt;p&gt;Here is an example of graphql.yml&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# GraphQL configuration
----
-# The path of GraphQL endpoint for both GET and POST
-path: /graphql
-
-# Enable GraphiQL for development environment only. It will allow you to test from your Browser.
-enableGraphiQL: true
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-common/</guid>
+      <description>This module controls the configuration for GraphQL service and share some static variables with other modules to make the dependencies much simpler.
+Here is an example of graphql.yml
+# GraphQL configuration --- # The path of GraphQL endpoint for both GET and POST path: /graphql # Enable GraphiQL for development environment only. It will allow you to test from your Browser. enableGraphiQL: true  </description>
     </item>
     
     <item>
       <title>Light Java GraphQL Components</title>
-      <link>https://networknt.github.io/light-java-graphql/components/</link>
+      <link>https://networknt.github.io/light-graphql-4j/components/</link>
       <pubDate>Mon, 27 Mar 2017 14:22:04 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/components/</guid>
-      <description>
-
-&lt;h2 id=&#34;common-components&#34;&gt;Common Components&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-common/&#34;&gt;graphql-common&lt;/a&gt;
-contains common utilities and static variables that are shared by other components.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-router/&#34;&gt;graphql-router&lt;/a&gt;
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;middleware-handlers&#34;&gt;Middleware Handlers&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-security/&#34;&gt;graphql-security&lt;/a&gt;
-verifies JWT token in request header and verifies scopes if it is enabled.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-validator/&#34;&gt;graphql-validator&lt;/a&gt;
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL componnent.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/components/</guid>
+      <description>Common Components  graphql-common contains common utilities and static variables that are shared by other components.
+ graphql-router is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.
+  Middleware Handlers  graphql-security verifies JWT token in request header and verifies scopes if it is enabled.
+ graphql-validator validates the path and methods of the request. Other schema validation will be handled by the GraphQL componnent.</description>
     </item>
     
     <item>
-      <title>Light Java GraphQL</title>
-      <link>https://networknt.github.io/light-java-graphql/introduction/</link>
+      <title>Light GraphQL 4J</title>
+      <link>https://networknt.github.io/light-graphql-4j/introduction/</link>
       <pubDate>Sun, 26 Mar 2017 21:03:44 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-java-graphql/introduction/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/networknt/light-java&#34;&gt;Light Java&lt;/a&gt; is a framework built on top
-of Undertow core HTTP server that addresses all the cross-cutting concerns for
-microservices in the request and response chain. &lt;a href=&#34;https://github.com/networknt/light-java-rest&#34;&gt;Light Java REST&lt;/a&gt;
-is built on top of Light Java and focuses on RESTful services with OpenAPI
-specification loaded at runtime to drive security and validation. &lt;a href=&#34;https://github.com/networknt/light-java-graphql&#34;&gt;Light Java GraphQL&lt;/a&gt;
-is based on Light Java and is our solution for &lt;a href=&#34;http://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; services.&lt;/p&gt;
-
-&lt;p&gt;With Light Java GraphQL, developers can only focus on Schema development and the rest
-of the functionalities are provided by the framework. These includes:&lt;/p&gt;
-
-&lt;h3 id=&#34;common-components&#34;&gt;Common Components&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/server/&#34;&gt;server&lt;/a&gt; is
-a framework on top of Undertow http core that support plugins to perform
-different middleware handlers. It is light-weight, fast and supports HTTP/2.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/config/&#34;&gt;config&lt;/a&gt; is a module that
-supports externalized yml/yaml/json configuration for standalone applications and
-docker containers managed by Kubernetes. Config files are managed by
-&lt;a href=&#34;https://github.com/networknt/light-config-server&#34;&gt;light-config-server&lt;/a&gt; and mapped
-to Kubernetes ConfigMap and Secrets.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/utility/&#34;&gt;utility&lt;/a&gt; contains utility
-classes and static variables that are shared between modules.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/client/&#34;&gt;client&lt;/a&gt; is a wrapper of
-apache HttpClient and HttpAsyncClient. It supports automatically cache and
-renew client credentials JWT tokens and manages connection pooling. It is also
-responsible for passing correlationId and traceabilityId to the next service.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/info/&#34;&gt;info&lt;/a&gt; is a handler that
-injects an endpoint /server/info to all server instances so that light-portal
-can pull the info to certify all the enabled components and their configuration
-at runtime. It also helps while debugging issues on the server.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/mask/&#34;&gt;mask&lt;/a&gt; is used to mask
-sensitive info before logging.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/status/&#34;&gt;status&lt;/a&gt; is used to model
-error http response and assist production monitoring with unique error code.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/status/&#34;&gt;security&lt;/a&gt; is used by
-swagger-security and graphql-security currently but these utilities and helpers can
-be used by other security handlers for Role-Based or Attribute-Based Authorization.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/balance/&#34;&gt;balance&lt;/a&gt; is a load balance
-module that is used by cluster module with service discovery module. It will be called
-from client module and be part of client side discovery.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/cluster/&#34;&gt;cluster&lt;/a&gt; ia a module caches
-discovered services and calling load balance module for load balancing. Part of client
-side discovery.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/consul/&#34;&gt;consul&lt;/a&gt; is a module manages
-communication with Consul server for registry and discovery.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/handler/&#34;&gt;handler&lt;/a&gt; is a module defines
-middleware handler interface for all middleware components.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/health/&#34;&gt;Health&lt;/a&gt; is a health check module
-that can be called by API portal to determine if the service is healthy. It supports
-cascade health check for databases or message queues.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/registry/&#34;&gt;registry&lt;/a&gt; ia an interface
-definition and generic direct registry implementation for service registry and discovery.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/service/&#34;&gt;service&lt;/a&gt; is a light weight
-dependency injection framework for testing and startup hooks.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/switcher/&#34;&gt;switcher&lt;/a&gt; is a switcher that
-turns things on and off based on certain conditions.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/other/zookeeper/&#34;&gt;zookeeper&lt;/a&gt; is a module manages
-communication with ZooKeeper server for service registry and discovery.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;middleware-handlers&#34;&gt;Middleware Handlers&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/audit/&#34;&gt;audit&lt;/a&gt; logs most important info
-about request and response into audit.log in JSON format with config file that controls which
-fieds to be logged.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/body/&#34;&gt;body&lt;/a&gt; is a body parser middleware
-that is responsible for parsing the content of the request based on Content-Type in the
-request header.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/exception/&#34;&gt;exception&lt;/a&gt; is a generic
-exception handler that handles runtime exception, ApiException and other checked exception
-if they are not handled properly in the handler chain.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/metrics/&#34;&gt;metrics&lt;/a&gt; is a module that collects
-API runtime info based on clientId and API name. The metrics info is sent to InfluxDB and
-accessible from Grafana Dashboard.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/sanitizer/&#34;&gt;sanitizer&lt;/a&gt; is a
-middleware that address cross site scripting concerns. It encodes header and body based on
-configuration.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/correlation/&#34;&gt;correlation&lt;/a&gt; generates
-a UUID in the first API/service and pass it to all other APIs/services in the call tree for
-tracking purpose.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/traceability/&#34;&gt;traceability&lt;/a&gt; is an
-id passed in from client and will be unique with an application context. The id will be passed
-into the backend and return to the consumer for transaction tracing.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/cors/&#34;&gt;cors&lt;/a&gt; is a module handles
-Cross-Origin Resource Sharing (CORS) pre-flight OPTIONS to support single page applications
-from another domain to access APIs/services.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/dump/&#34;&gt;dump&lt;/a&gt; is a full request/response
-log handler to dump everything regarding to request and response into log file for developers.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java/middleware/limit/&#34;&gt;limit&lt;/a&gt; is a rate limiting handler
-to limit number of concurrent requests on the server. Once the limit is reached, subsequent
-requests will be queued for later execution. The size of the queue is configurable.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;graphql-specific-components&#34;&gt;GraphQL Specific Components&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-common/&#34;&gt;graphql-common&lt;/a&gt;
-contains common utilities and static variables that are shared by other components.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-router/&#34;&gt;graphql-router&lt;/a&gt;
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;graphql-specific-middleware-handlers&#34;&gt;GraphQL Specific Middleware Handlers&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-security/&#34;&gt;graphql-security&lt;/a&gt;
-verifies JWT token in request header and verifies scopes if it is enabled.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://networknt.github.io/light-java-graphql/components/graphql-validator/&#34;&gt;graphql-validator&lt;/a&gt;
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL component.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>https://networknt.github.io/light-graphql-4j/introduction/</guid>
+      <description>GraphQL Specific Components  graphql-common contains common utilities and static variables that are shared by other components.
+ graphql-router is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.
+  GraphQL Specific Middleware Handlers  graphql-security verifies JWT token in request header and verifies scopes if it is enabled.
+ graphql-validator validates the path and methods of the request. Other schema validation will be handled by the GraphQL component.</description>
     </item>
     
   </channel>
