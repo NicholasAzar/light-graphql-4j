@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Light GraphQL 4J - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <title>GraphQL Router - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
     <meta name="generator" content="Hugo 0.20.6" />
 
     
     <meta name="description" content="Light GraphQL 4J Docs">
     
-    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/introduction/">
+    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/component/graphql-router/">
     
     <meta name="author" content="Steve Hu">
     
 
-    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/introduction/">
+    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/component/graphql-router/">
     <meta property="og:title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
     <meta property="og:image" content="https://networknt.github.io/light-graphql-4j/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Light GraphQL 4J
+        GraphQL Router
       </div>
     </div>
 
@@ -180,14 +180,11 @@
 
 
 
-<a class="current" title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
+<a  title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
 	
 	Introduction
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
   
@@ -356,30 +353,24 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Light GraphQL 4J </h1>
+			<h1>GraphQL Router </h1>
 
-			
+			<p>This module provides RouteHandler and SchemaProvider interfaces and implement both GET and
+POST handlers for GraphQL.</p>
 
-<h3 id="graphql-specific-components">GraphQL Specific Components</h3>
+<p>The router is a HandlerProvider and it needs to be put into file
+/src/main/resources/META-INF/services/com.networknt.server.HandlerProvider
+in your GraphQL API/service.</p>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-common/">graphql-common</a>
-contains common utilities and static variables that are shared by other components.</p></li>
+<p>The <a href="https://github.com/networknt/light-example-4j/blob/master/graphql/mutation/src/main/resources/META-INF/services/com.networknt.server.HandlerProvider">link</a>
+is an example.</p>
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-router/">graphql-router</a>
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.</p></li>
-</ul>
+<p>The user developed schema needs to be hooked to the GraphqlPostHandler in this module through
+SchemaProvider interface. The SPI config file should be located at
+/src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider</p>
 
-<h3 id="graphql-specific-middleware-handlers">GraphQL Specific Middleware Handlers</h3>
-
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-security/">graphql-security</a>
-verifies JWT token in request header and verifies scopes if it is enabled.</p></li>
-
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-validator/">graphql-validator</a>
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL component.</p></li>
-</ul>
+<p>The <a href="https://github.com/networknt/light-example-4j/blob/master/graphql/mutation/src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider">link</a>
+is an example.</p>
 
 
 			<aside class="copyright" role="note">
@@ -398,7 +389,7 @@ GraphQL component.</p></li>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-graphql-4j/component/" title="Light Java GraphQL Components">
+      <a href="https://networknt.github.io/light-graphql-4j/component/graphql-security/" title="GraphQL Security">
         <span class="direction">
           Previous
         </span>
@@ -408,7 +399,7 @@ GraphQL component.</p></li>
           </div>
           <div class="stretch">
             <div class="title">
-              Light Java GraphQL Components
+              GraphQL Security
             </div>
           </div>
         </div>
@@ -417,6 +408,22 @@ GraphQL component.</p></li>
   </div>
 
   <div class="next">
+  
+      <a href="https://networknt.github.io/light-graphql-4j/component/graphql-common/" title="GraphQL Common">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              GraphQL Common
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
   
   </div>
 </nav>

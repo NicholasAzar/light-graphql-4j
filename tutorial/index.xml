@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorials on Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <link>https://networknt.github.io/light-graphql-4j/tutorial/</link>
+    <description>Recent content in Tutorials on Light GraphQL 4J - A GraphQL framework built on top of light-4j</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Mon, 27 Mar 2017 17:05:38 -0400</lastBuildDate>
+    
+	<atom:link href="https://networknt.github.io/light-graphql-4j/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Relay Todo</title>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/</link>
+      <pubDate>Mon, 27 Mar 2017 17:05:38 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/</guid>
+      <description>Relay Todo is built on top of mutation example with the following changes.
+pom.xml Only artifact and name are changed.
+SchemaProvider com.networknt.schema.TodoSchema  TodoSchema There are several files to support Todo schema and they are located at
+https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema
+Relay React App The client app is located at
+https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/app
+Start servers and test See README.md</description>
+    </item>
+    
+    <item>
+      <title>Mutation</title>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/mutation/</link>
+      <pubDate>Mon, 27 Mar 2017 17:05:23 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/mutation/</guid>
+      <description>Mutation is modified from hello example and the following files are updated.
+pom.xml Only artifact and name are changed.
+SchemaProvider com.networknt.schema.MutationSchema  MutationSchema package com.networknt.schema; import com.networknt.graphql.router.SchemaProvider; import graphql.schema.DataFetcher; import graphql.schema.DataFetchingEnvironment; import graphql.schema.GraphQLObjectType; import graphql.schema.GraphQLSchema; import static graphql.Scalars.GraphQLInt; import static graphql.Scalars.GraphQLString; import static graphql.schema.GraphQLArgument.newArgument; import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition; import static graphql.schema.GraphQLObjectType.newObject; /** * Created by steve on 25/03/17. */ public class MutationSchema implements SchemaProvider { public static class NumberHolder { int theNumber; public NumberHolder(int theNumber) { this.</description>
+    </item>
+    
+    <item>
+      <title>Hello World Tutorial</title>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/hello/</link>
+      <pubDate>Mon, 27 Mar 2017 17:05:10 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/hello/</guid>
+      <description>This is the first example application and the README.md shows how to use it.
+Unlike light-rest-4j has a swagger-codegen to generate the project, we have to construct the project based on the petstore example and modify some files for GraphQL.
+File changed:
+pom.xml The artifact and name of the project are changed. Also, add graphql-java as dependency.
+ &amp;lt;version.light-java-graphql&amp;gt;1.2.6&amp;lt;/version.light-java-graphql&amp;gt; &amp;lt;version.graphql&amp;gt;2.3.0&amp;lt;/version.graphql&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;graphql-common&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.networknt&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;graphql-router&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${version.light-java-graphql}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/</link>
+      <pubDate>Mon, 27 Mar 2017 16:03:38 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/</guid>
+      <description>There are three tutorials in the example folder.
+Hello This is a very simple Hello World query to show you how to get GraphQL up and running.
+Mutation This example shows you how to create a full blown GraphQL service with both query and mutation.
+Relay Todo This is to show you how to build a GraphQL service that is working with Relayjs.</description>
+    </item>
+    
+  </channel>
+</rss>

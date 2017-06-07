@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Light GraphQL 4J - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <title>Mutation - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
     <meta name="generator" content="Hugo 0.20.6" />
 
     
     <meta name="description" content="Light GraphQL 4J Docs">
     
-    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/introduction/">
+    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/tutorial/mutation/">
     
     <meta name="author" content="Steve Hu">
     
 
-    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/introduction/">
+    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/tutorial/mutation/">
     <meta property="og:title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
     <meta property="og:image" content="https://networknt.github.io/light-graphql-4j/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Light GraphQL 4J
+        Mutation
       </div>
     </div>
 
@@ -180,14 +180,11 @@
 
 
 
-<a class="current" title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
+<a  title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
 	
 	Introduction
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
   
@@ -356,30 +353,143 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Light GraphQL 4J </h1>
+			<h1>Mutation </h1>
 
 			
 
-<h3 id="graphql-specific-components">GraphQL Specific Components</h3>
+<p>Mutation is modified from hello example and the following files are updated.</p>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-common/">graphql-common</a>
-contains common utilities and static variables that are shared by other components.</p></li>
+<h3 id="pom-xml">pom.xml</h3>
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-router/">graphql-router</a>
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.</p></li>
-</ul>
+<p>Only artifact and name are changed.</p>
 
-<h3 id="graphql-specific-middleware-handlers">GraphQL Specific Middleware Handlers</h3>
+<h3 id="schemaprovider">SchemaProvider</h3>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-security/">graphql-security</a>
-verifies JWT token in request header and verifies scopes if it is enabled.</p></li>
+<pre><code>com.networknt.schema.MutationSchema
+</code></pre>
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-validator/">graphql-validator</a>
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL component.</p></li>
-</ul>
+<h3 id="mutationschema">MutationSchema</h3>
+
+<pre><code>package com.networknt.schema;
+
+import com.networknt.graphql.router.SchemaProvider;
+import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
+import graphql.schema.GraphQLObjectType;
+import graphql.schema.GraphQLSchema;
+
+import static graphql.Scalars.GraphQLInt;
+import static graphql.Scalars.GraphQLString;
+import static graphql.schema.GraphQLArgument.newArgument;
+import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
+import static graphql.schema.GraphQLObjectType.newObject;
+
+/**
+ * Created by steve on 25/03/17.
+ */
+public class MutationSchema implements SchemaProvider {
+    public static class NumberHolder {
+        int theNumber;
+
+        public NumberHolder(int theNumber) {
+            this.theNumber = theNumber;
+        }
+
+        public int getTheNumber() {
+            return theNumber;
+        }
+
+        public void setTheNumber(int theNumber) {
+            this.theNumber = theNumber;
+        }
+
+
+    }
+
+    public static class Root {
+        NumberHolder numberHolder;
+
+        public Root(int number) {
+            this.numberHolder = new NumberHolder(number);
+        }
+
+        public NumberHolder changeNumber(int newNumber) {
+            this.numberHolder.theNumber = newNumber;
+            return this.numberHolder;
+        }
+
+
+        public NumberHolder failToChangeTheNumber(int newNumber) {
+            throw new RuntimeException(&quot;Cannot change the number&quot;);
+        }
+    }
+
+    public static Root root = new Root(6);
+
+    public static GraphQLObjectType numberHolderType = GraphQLObjectType.newObject()
+            .name(&quot;NumberHolder&quot;)
+            .field(newFieldDefinition()
+                    .name(&quot;theNumber&quot;)
+                    .type(GraphQLInt))
+            .build();
+
+    public static GraphQLObjectType queryType = GraphQLObjectType.newObject()
+            .name(&quot;queryType&quot;)
+            .field(newFieldDefinition()
+                    .name(&quot;numberHolder&quot;)
+                    .dataFetcher(new DataFetcher() {
+                        @Override
+                        public Object get(DataFetchingEnvironment environment) {
+                            return root.numberHolder;
+                        }
+                    })
+                    .type(numberHolderType))
+            .build();
+
+    public static GraphQLObjectType mutationType = GraphQLObjectType.newObject()
+            .name(&quot;mutationType&quot;)
+            .field(newFieldDefinition()
+                    .name(&quot;changeTheNumber&quot;)
+                    .type(numberHolderType)
+                    .argument(newArgument()
+                            .name(&quot;newNumber&quot;)
+                            .type(GraphQLInt))
+                    .dataFetcher(new DataFetcher() {
+                        @Override
+                        public Object get(DataFetchingEnvironment environment) {
+                            Integer newNumber = environment.getArgument(&quot;newNumber&quot;);
+                            return root.changeNumber(newNumber);
+                        }
+                    }))
+            .field(newFieldDefinition()
+                    .name(&quot;failToChangeTheNumber&quot;)
+                    .type(numberHolderType)
+                    .argument(newArgument()
+                            .name(&quot;newNumber&quot;)
+                            .type(GraphQLInt))
+                    .dataFetcher(new DataFetcher() {
+                        @Override
+                        public Object get(DataFetchingEnvironment environment) {
+                            Integer newNumber = environment.getArgument(&quot;newNumber&quot;);
+                            return root.failToChangeTheNumber(newNumber);
+                        }
+                    }))
+            .build();
+
+    @Override
+    public GraphQLSchema getSchema() {
+        return GraphQLSchema.newSchema()
+                .query(queryType)
+                .mutation(mutationType)
+                .build();
+    }
+}
+
+</code></pre>
+
+<h3 id="start-server-and-test">Start server and test</h3>
+
+<p>See <a href="https://github.com/networknt/light-example-4j/tree/master/graphql/mutation">README.md</a></p>
 
 
 			<aside class="copyright" role="note">
@@ -398,7 +508,7 @@ GraphQL component.</p></li>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-graphql-4j/component/" title="Light Java GraphQL Components">
+      <a href="https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/" title="Relay Todo">
         <span class="direction">
           Previous
         </span>
@@ -408,7 +518,7 @@ GraphQL component.</p></li>
           </div>
           <div class="stretch">
             <div class="title">
-              Light Java GraphQL Components
+              Relay Todo
             </div>
           </div>
         </div>
@@ -417,6 +527,22 @@ GraphQL component.</p></li>
   </div>
 
   <div class="next">
+  
+      <a href="https://networknt.github.io/light-graphql-4j/tutorial/hello/" title="Hello World Tutorial">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Hello World Tutorial
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
   
   </div>
 </nav>

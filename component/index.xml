@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Components on Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <link>https://networknt.github.io/light-graphql-4j/component/</link>
+    <description>Recent content in Components on Light GraphQL 4J - A GraphQL framework built on top of light-4j</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Mon, 27 Mar 2017 14:25:32 -0400</lastBuildDate>
+    
+	<atom:link href="https://networknt.github.io/light-graphql-4j/component/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GraphQL Validator</title>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-validator/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:32 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-validator/</guid>
+      <description>Basic request validation for the graphql path and methods. It is the first line of validation right after graphql-security and it doesn&amp;rsquo;t have any knowledge about the graphql query parameter and body. Other schema based validation will be done at GraphQL level.
+It shares the same configuration file with swagger-validator and here is an example.
+# Validate request/response for GraphQL request --- enabled: true enableResponseValidator: false  </description>
+    </item>
+    
+    <item>
+      <title>GraphQL Security</title>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-security/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:26 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-security/</guid>
+      <description>This module is very similar with swagger-security but as there is swagger specification we cannot verify scopes against specification. GraphQL recommend authorization outside of schema so that we can only verify query scope and mutation scope for read and write access.
+This is the handler that should be put before graphql-validator. There is no need to do any validation if JWT token does not exist in the request header.
+The module share the same security.</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Router</title>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-router/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:17 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-router/</guid>
+      <description>This module provides RouteHandler and SchemaProvider interfaces and implement both GET and POST handlers for GraphQL.
+The router is a HandlerProvider and it needs to be put into file /src/main/resources/META-INF/services/com.networknt.server.HandlerProvider in your GraphQL API/service.
+The link is an example.
+The user developed schema needs to be hooked to the GraphqlPostHandler in this module through SchemaProvider interface. The SPI config file should be located at /src/main/resources/META-INF/services/com.networknt.graphql.router.SchemaProvider
+The link is an example.</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Common</title>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-common/</link>
+      <pubDate>Mon, 27 Mar 2017 14:25:02 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-common/</guid>
+      <description>This module controls the configuration for GraphQL service and share some static variables with other modules to make the dependencies much simpler.
+Here is an example of graphql.yml
+# GraphQL configuration --- # The path of GraphQL endpoint for both GET and POST path: /graphql # Enable GraphiQL for development environment only. It will allow you to test from your Browser. enableGraphiQL: true  </description>
+    </item>
+    
+    <item>
+      <title>Light Java GraphQL Components</title>
+      <link>https://networknt.github.io/light-graphql-4j/component/</link>
+      <pubDate>Mon, 27 Mar 2017 14:22:04 -0400</pubDate>
+      
+      <guid>https://networknt.github.io/light-graphql-4j/component/</guid>
+      <description>Common Components  graphql-common contains common utilities and static variables that are shared by other components.
+ graphql-router is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.
+  Middleware Handlers  graphql-security verifies JWT token in request header and verifies scopes if it is enabled.
+ graphql-validator validates the path and methods of the request. Other schema validation will be handled by the GraphQL componnent.</description>
+    </item>
+    
+  </channel>
+</rss>

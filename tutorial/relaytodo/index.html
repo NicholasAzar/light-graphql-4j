@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Light GraphQL 4J - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <title>Relay Todo - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
     <meta name="generator" content="Hugo 0.20.6" />
 
     
     <meta name="description" content="Light GraphQL 4J Docs">
     
-    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/introduction/">
+    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/">
     
     <meta name="author" content="Steve Hu">
     
 
-    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/introduction/">
+    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/">
     <meta property="og:title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
     <meta property="og:image" content="https://networknt.github.io/light-graphql-4j/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Light GraphQL 4J
+        Relay Todo
       </div>
     </div>
 
@@ -180,14 +180,11 @@
 
 
 
-<a class="current" title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
+<a  title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
 	
 	Introduction
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
   
@@ -356,30 +353,36 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Light GraphQL 4J </h1>
+			<h1>Relay Todo </h1>
 
 			
 
-<h3 id="graphql-specific-components">GraphQL Specific Components</h3>
+<p>Relay Todo is built on top of mutation example with the following changes.</p>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-common/">graphql-common</a>
-contains common utilities and static variables that are shared by other components.</p></li>
+<h3 id="pom-xml">pom.xml</h3>
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-router/">graphql-router</a>
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.</p></li>
-</ul>
+<p>Only artifact and name are changed.</p>
 
-<h3 id="graphql-specific-middleware-handlers">GraphQL Specific Middleware Handlers</h3>
+<h3 id="schemaprovider">SchemaProvider</h3>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-security/">graphql-security</a>
-verifies JWT token in request header and verifies scopes if it is enabled.</p></li>
+<pre><code>com.networknt.schema.TodoSchema
+</code></pre>
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-validator/">graphql-validator</a>
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL component.</p></li>
-</ul>
+<h3 id="todoschema">TodoSchema</h3>
+
+<p>There are several files to support Todo schema and they are located at</p>
+
+<p><a href="https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema">https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/src/main/java/com/networknt/schema</a></p>
+
+<h3 id="relay-react-app">Relay React App</h3>
+
+<p>The client app is located at</p>
+
+<p><a href="https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/app">https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo/app</a></p>
+
+<h3 id="start-servers-and-test">Start servers and test</h3>
+
+<p>See <a href="https://github.com/networknt/light-example-4j/tree/master/graphql/relaytodo">README.md</a></p>
 
 
 			<aside class="copyright" role="note">
@@ -398,25 +401,25 @@ GraphQL component.</p></li>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-graphql-4j/component/" title="Light Java GraphQL Components">
-        <span class="direction">
-          Previous
-        </span>
-        <div class="page">
-          <div class="button button-previous" role="button" aria-label="Previous">
-            <i class="icon icon-back"></i>
-          </div>
-          <div class="stretch">
-            <div class="title">
-              Light Java GraphQL Components
-            </div>
-          </div>
-        </div>
-      </a>
-  
   </div>
 
   <div class="next">
+  
+      <a href="https://networknt.github.io/light-graphql-4j/tutorial/mutation/" title="Mutation">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Mutation
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
   
   </div>
 </nav>

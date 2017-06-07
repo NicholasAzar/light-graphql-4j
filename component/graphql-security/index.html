@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Light GraphQL 4J - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <title>GraphQL Security - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
     <meta name="generator" content="Hugo 0.20.6" />
 
     
     <meta name="description" content="Light GraphQL 4J Docs">
     
-    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/introduction/">
+    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/component/graphql-security/">
     
     <meta name="author" content="Steve Hu">
     
 
-    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/introduction/">
+    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/component/graphql-security/">
     <meta property="og:title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
     <meta property="og:image" content="https://networknt.github.io/light-graphql-4j/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Light GraphQL 4J
+        GraphQL Security
       </div>
     </div>
 
@@ -180,14 +180,11 @@
 
 
 
-<a class="current" title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
+<a  title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
 	
 	Introduction
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
   
@@ -356,30 +353,43 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Light GraphQL 4J </h1>
+			<h1>GraphQL Security </h1>
 
-			
+			<p>This module is very similar with swagger-security but as there is swagger specification
+we cannot verify scopes against specification. GraphQL recommend authorization outside
+of schema so that we can only verify query scope and mutation scope for read and write
+access.</p>
 
-<h3 id="graphql-specific-components">GraphQL Specific Components</h3>
+<p>This is the handler that should be put before graphql-validator. There is no need to
+do any validation if JWT token does not exist in the request header.</p>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-common/">graphql-common</a>
-contains common utilities and static variables that are shared by other components.</p></li>
+<p>The module share the same security.yml and here is an example.</p>
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-router/">graphql-router</a>
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.</p></li>
-</ul>
+<pre><code># Security configuration in light framework.
+---
+# Enable JWT verification flag.
+enableVerifyJwt: true
 
-<h3 id="graphql-specific-middleware-handlers">GraphQL Specific Middleware Handlers</h3>
+# Enable JWT scope verification. Only valid when enableVerifyJwt is true.
+enableVerifyScope: true
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-security/">graphql-security</a>
-verifies JWT token in request header and verifies scopes if it is enabled.</p></li>
+# User for test only. should be always be false on official environment.
+enableMockJwt: false
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-validator/">graphql-validator</a>
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL component.</p></li>
-</ul>
+# JWT signature public certificates. kid and certificate path mappings.
+jwt:
+  certificate:
+    '100': oauth/primary.crt
+    '101': oauth/secondary.crt
+  clockSkewInSeconds: 60
+
+# Enable or disable JWT token logging
+logJwtToken: true
+
+# Enable or disable client_id, user_id and scope logging.
+logClientUserScope: false
+
+</code></pre>
 
 
 			<aside class="copyright" role="note">
@@ -398,7 +408,7 @@ GraphQL component.</p></li>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-graphql-4j/component/" title="Light Java GraphQL Components">
+      <a href="https://networknt.github.io/light-graphql-4j/component/graphql-validator/" title="GraphQL Validator">
         <span class="direction">
           Previous
         </span>
@@ -408,7 +418,7 @@ GraphQL component.</p></li>
           </div>
           <div class="stretch">
             <div class="title">
-              Light Java GraphQL Components
+              GraphQL Validator
             </div>
           </div>
         </div>
@@ -417,6 +427,22 @@ GraphQL component.</p></li>
   </div>
 
   <div class="next">
+  
+      <a href="https://networknt.github.io/light-graphql-4j/component/graphql-router/" title="GraphQL Router">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              GraphQL Router
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
   
   </div>
 </nav>

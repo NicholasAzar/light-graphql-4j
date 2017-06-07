@@ -14,10 +14,10 @@
     
     <item>
       <title>Relay Todo</title>
-      <link>https://networknt.github.io/light-graphql-4j/tutorials/relaytodo/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:38 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/tutorials/relaytodo/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/relaytodo/</guid>
       <description>Relay Todo is built on top of mutation example with the following changes.
 pom.xml Only artifact and name are changed.
 SchemaProvider com.networknt.schema.TodoSchema  TodoSchema There are several files to support Todo schema and they are located at
@@ -29,10 +29,10 @@ Start servers and test See README.md</description>
     
     <item>
       <title>Mutation</title>
-      <link>https://networknt.github.io/light-graphql-4j/tutorials/mutation/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/mutation/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:23 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/tutorials/mutation/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/mutation/</guid>
       <description>Mutation is modified from hello example and the following files are updated.
 pom.xml Only artifact and name are changed.
 SchemaProvider com.networknt.schema.MutationSchema  MutationSchema package com.networknt.schema; import com.networknt.graphql.router.SchemaProvider; import graphql.schema.DataFetcher; import graphql.schema.DataFetchingEnvironment; import graphql.schema.GraphQLObjectType; import graphql.schema.GraphQLSchema; import static graphql.Scalars.GraphQLInt; import static graphql.Scalars.GraphQLString; import static graphql.schema.GraphQLArgument.newArgument; import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition; import static graphql.schema.GraphQLObjectType.newObject; /** * Created by steve on 25/03/17. */ public class MutationSchema implements SchemaProvider { public static class NumberHolder { int theNumber; public NumberHolder(int theNumber) { this.</description>
@@ -40,10 +40,10 @@ SchemaProvider com.networknt.schema.MutationSchema  MutationSchema package com.n
     
     <item>
       <title>Hello World Tutorial</title>
-      <link>https://networknt.github.io/light-graphql-4j/tutorials/hello/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/hello/</link>
       <pubDate>Mon, 27 Mar 2017 17:05:10 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/tutorials/hello/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/hello/</guid>
       <description>This is the first example application and the README.md shows how to use it.
 Unlike light-rest-4j has a swagger-codegen to generate the project, we have to construct the project based on the petstore example and modify some files for GraphQL.
 File changed:
@@ -53,10 +53,10 @@ pom.xml The artifact and name of the project are changed. Also, add graphql-java
     
     <item>
       <title>Tools</title>
-      <link>https://networknt.github.io/light-graphql-4j/tools/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tool/</link>
       <pubDate>Mon, 27 Mar 2017 16:03:51 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/tools/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/tool/</guid>
       <description>The most useful tool is the GraphiQL application that is served at
 http://localhost:8080/graphql
 For more information about this tool, please check this site.</description>
@@ -64,10 +64,10 @@ For more information about this tool, please check this site.</description>
     
     <item>
       <title>Tutorials</title>
-      <link>https://networknt.github.io/light-graphql-4j/tutorials/</link>
+      <link>https://networknt.github.io/light-graphql-4j/tutorial/</link>
       <pubDate>Mon, 27 Mar 2017 16:03:38 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/tutorials/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/tutorial/</guid>
       <description>There are three tutorials in the example folder.
 Hello This is a very simple Hello World query to show you how to get GraphQL up and running.
 Mutation This example shows you how to create a full blown GraphQL service with both query and mutation.
@@ -99,10 +99,10 @@ There are several things in mind to improved it.
     
     <item>
       <title>GraphQL Validator</title>
-      <link>https://networknt.github.io/light-graphql-4j/components/graphql-validator/</link>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-validator/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:32 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-validator/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-validator/</guid>
       <description>Basic request validation for the graphql path and methods. It is the first line of validation right after graphql-security and it doesn&amp;rsquo;t have any knowledge about the graphql query parameter and body. Other schema based validation will be done at GraphQL level.
 It shares the same configuration file with swagger-validator and here is an example.
 # Validate request/response for GraphQL request --- enabled: true enableResponseValidator: false  </description>
@@ -110,10 +110,10 @@ It shares the same configuration file with swagger-validator and here is an exam
     
     <item>
       <title>GraphQL Security</title>
-      <link>https://networknt.github.io/light-graphql-4j/components/graphql-security/</link>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-security/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:26 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-security/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-security/</guid>
       <description>This module is very similar with swagger-security but as there is swagger specification we cannot verify scopes against specification. GraphQL recommend authorization outside of schema so that we can only verify query scope and mutation scope for read and write access.
 This is the handler that should be put before graphql-validator. There is no need to do any validation if JWT token does not exist in the request header.
 The module share the same security.</description>
@@ -121,10 +121,10 @@ The module share the same security.</description>
     
     <item>
       <title>GraphQL Router</title>
-      <link>https://networknt.github.io/light-graphql-4j/components/graphql-router/</link>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-router/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:17 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-router/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-router/</guid>
       <description>This module provides RouteHandler and SchemaProvider interfaces and implement both GET and POST handlers for GraphQL.
 The router is a HandlerProvider and it needs to be put into file /src/main/resources/META-INF/services/com.networknt.server.HandlerProvider in your GraphQL API/service.
 The link is an example.
@@ -134,10 +134,10 @@ The link is an example.</description>
     
     <item>
       <title>GraphQL Common</title>
-      <link>https://networknt.github.io/light-graphql-4j/components/graphql-common/</link>
+      <link>https://networknt.github.io/light-graphql-4j/component/graphql-common/</link>
       <pubDate>Mon, 27 Mar 2017 14:25:02 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/components/graphql-common/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/component/graphql-common/</guid>
       <description>This module controls the configuration for GraphQL service and share some static variables with other modules to make the dependencies much simpler.
 Here is an example of graphql.yml
 # GraphQL configuration --- # The path of GraphQL endpoint for both GET and POST path: /graphql # Enable GraphiQL for development environment only. It will allow you to test from your Browser. enableGraphiQL: true  </description>
@@ -145,10 +145,10 @@ Here is an example of graphql.yml
     
     <item>
       <title>Light Java GraphQL Components</title>
-      <link>https://networknt.github.io/light-graphql-4j/components/</link>
+      <link>https://networknt.github.io/light-graphql-4j/component/</link>
       <pubDate>Mon, 27 Mar 2017 14:22:04 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/components/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/component/</guid>
       <description>Common Components  graphql-common contains common utilities and static variables that are shared by other components.
  graphql-router is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.
   Middleware Handlers  graphql-security verifies JWT token in request header and verifies scopes if it is enabled.

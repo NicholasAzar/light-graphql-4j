@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Light GraphQL 4J - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
+    <title>GraphQL Validator - Light GraphQL 4J - A GraphQL framework built on top of light-4j</title>
     <meta name="generator" content="Hugo 0.20.6" />
 
     
     <meta name="description" content="Light GraphQL 4J Docs">
     
-    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/introduction/">
+    <link rel="canonical" href="https://networknt.github.io/light-graphql-4j/component/graphql-validator/">
     
     <meta name="author" content="Steve Hu">
     
 
-    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/introduction/">
+    <meta property="og:url" content="https://networknt.github.io/light-graphql-4j/component/graphql-validator/">
     <meta property="og:title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
     <meta property="og:image" content="https://networknt.github.io/light-graphql-4j/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="Light GraphQL 4J - A GraphQL framework built on top of light-4j">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Light GraphQL 4J
+        GraphQL Validator
       </div>
     </div>
 
@@ -180,14 +180,11 @@
 
 
 
-<a class="current" title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
+<a  title="Introduction" href="https://networknt.github.io/light-graphql-4j/introduction/">
 	
 	Introduction
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
   
@@ -356,30 +353,21 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Light GraphQL 4J </h1>
+			<h1>GraphQL Validator </h1>
 
-			
+			<p>Basic request validation for the graphql path and methods. It is the first line of
+validation right after graphql-security and it doesn&rsquo;t have any knowledge about the
+graphql query parameter and body. Other schema based validation will be done at
+GraphQL level.</p>
 
-<h3 id="graphql-specific-components">GraphQL Specific Components</h3>
+<p>It shares the same configuration file with swagger-validator and here is an example.</p>
 
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-common/">graphql-common</a>
-contains common utilities and static variables that are shared by other components.</p></li>
+<pre><code># Validate request/response for GraphQL request
+---
+enabled: true
+enableResponseValidator: false
 
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-router/">graphql-router</a>
-is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.</p></li>
-</ul>
-
-<h3 id="graphql-specific-middleware-handlers">GraphQL Specific Middleware Handlers</h3>
-
-<ul>
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-security/">graphql-security</a>
-verifies JWT token in request header and verifies scopes if it is enabled.</p></li>
-
-<li><p><a href="https://networknt.github.io/light-graphql-4j/components/graphql-validator/">graphql-validator</a>
-validates the path and methods of the request. Other schema validation will be handled by the
-GraphQL component.</p></li>
-</ul>
+</code></pre>
 
 
 			<aside class="copyright" role="note">
@@ -398,7 +386,7 @@ GraphQL component.</p></li>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="https://networknt.github.io/light-graphql-4j/component/" title="Light Java GraphQL Components">
+      <a href="https://networknt.github.io/light-graphql-4j/roadmap/" title="Roadmap">
         <span class="direction">
           Previous
         </span>
@@ -408,7 +396,7 @@ GraphQL component.</p></li>
           </div>
           <div class="stretch">
             <div class="title">
-              Light Java GraphQL Components
+              Roadmap
             </div>
           </div>
         </div>
@@ -417,6 +405,22 @@ GraphQL component.</p></li>
   </div>
 
   <div class="next">
+  
+      <a href="https://networknt.github.io/light-graphql-4j/component/graphql-security/" title="GraphQL Security">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              GraphQL Security
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
   
   </div>
 </nav>
