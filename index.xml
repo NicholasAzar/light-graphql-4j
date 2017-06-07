@@ -157,10 +157,10 @@ Here is an example of graphql.yml
     
     <item>
       <title>Light GraphQL 4J</title>
-      <link>https://networknt.github.io/light-graphql-4j/introduction/</link>
+      <link>https://networknt.github.io/light-graphql-4j/</link>
       <pubDate>Sun, 26 Mar 2017 21:03:44 -0400</pubDate>
       
-      <guid>https://networknt.github.io/light-graphql-4j/introduction/</guid>
+      <guid>https://networknt.github.io/light-graphql-4j/</guid>
       <description>GraphQL Specific Components  graphql-common contains common utilities and static variables that are shared by other components.
  graphql-router is responsible for handling GraphQL and GraphiQL requests and hooks schema provider.
   GraphQL Specific Middleware Handlers  graphql-security verifies JWT token in request header and verifies scopes if it is enabled.

@@ -62,7 +62,7 @@
   </url>
   
   <url>
-    <loc>https://networknt.github.io/light-graphql-4j/introduction/</loc>
+    <loc>https://networknt.github.io/light-graphql-4j/</loc>
     <lastmod>2017-03-26T21:03:44-04:00</lastmod>
   </url>
   
@@ -80,12 +80,6 @@
   <url>
     <loc>https://networknt.github.io/light-graphql-4j/getting-started/</loc>
     <lastmod>2017-03-27T16:03:12-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://networknt.github.io/light-graphql-4j/introduction/</loc>
-    <lastmod>2017-03-26T21:03:44-04:00</lastmod>
     <priority>0</priority>
   </url>
   
