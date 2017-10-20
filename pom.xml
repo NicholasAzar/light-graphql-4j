@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.networknt</groupId>
     <artifactId>light-graphql-4j</artifactId>
-    <version>1.4.6</version>
+    <version>1.4.7</version>
     <packaging>pom</packaging>
     <name>Parent POM</name>
     <description>Light 4J Framework GraphQL Components</description>
@@ -88,7 +88,8 @@
         <version.zookeeper>3.5.2-alpha</version.zookeeper>
         <version.zkclient>0.3</version.zkclient>
         <version.curator>3.2.1</version.curator>
-        <version.graphql>3.0.0</version.graphql>
+        <version.graphql>5.0</version.graphql>
+        <version.rxjava>2.1.5</version.rxjava>
     </properties>
 
     <modules>
@@ -348,6 +349,11 @@
                 <groupId>com.graphql-java</groupId>
                 <artifactId>graphql-java</artifactId>
                 <version>${version.graphql}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.reactivex.rxjava2</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${version.rxjava}</version>
             </dependency>
 
             <!-- Test dependencies -->

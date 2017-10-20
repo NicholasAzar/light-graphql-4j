@@ -5,6 +5,7 @@ package com.networknt.graphql.common;
  */
 public class GraphqlConfig {
     String path;
+    String subscriptionsPath;
     boolean enableGraphiQL;
 
     public GraphqlConfig() {
@@ -16,6 +17,14 @@ public class GraphqlConfig {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getSubscriptionsPath() {
+        return subscriptionsPath;
+    }
+
+    public void setSubscriptionsPath(String subscriptionsPath) {
+        this.subscriptionsPath = subscriptionsPath;
     }
 
     public boolean isEnableGraphiQL() {

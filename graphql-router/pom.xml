@@ -21,7 +21,7 @@
     <parent>
         <groupId>com.networknt</groupId>
         <artifactId>light-graphql-4j</artifactId>
-        <version>1.4.6</version>
+        <version>1.4.7</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -94,6 +94,10 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
         </dependency>
 
         <dependency>

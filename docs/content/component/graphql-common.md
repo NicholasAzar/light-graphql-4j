@@ -14,6 +14,9 @@ Here is an example of graphql.yml
 # The path of GraphQL endpoint for both GET and POST
 path: /graphql
 
+# Path to the ws subscription server.
+subscriptionsPath: /subscriptions
+
 # Enable GraphiQL for development environment only. It will allow you to test from your Browser.
 enableGraphiQL: true
 

@@ -1,6 +1,5 @@
 package com.networknt.graphql.router;
 
-import com.networknt.graphql.common.GraphqlUtil;
 import com.networknt.utility.Util;
 
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.Map;
  */
 public class RenderGraphiQL {
     // Current latest version of GraphiQL
-    public static final String GRAPHIQL_VERSION = "0.9.1";
+    public static final String GRAPHIQL_VERSION = "0.11.2";
 
     public static final String template = "<!--\n" +
             "The request to this GraphQL server provided the header \"Accept: text/html\"\n" +
@@ -35,11 +34,12 @@ public class RenderGraphiQL {
             "      width: 100%;\n" +
             "    }\n" +
             "  </style>\n" +
-            "  <link href=\"//cdn.jsdelivr.net/graphiql/${GRAPHIQL_VERSION}/graphiql.css\" rel=\"stylesheet\" />\n" +
+            "  <link href=\"https://unpkg.com/graphiql@${GRAPHIQL_VERSION}/graphiql.css\" rel=\"stylesheet\" />\n" +
+            "  <script src=\"//cdn.jsdelivr.net/es6-promise/4.0.5/es6-promise.auto.min.js\"></script>\n" +
             "  <script src=\"//cdn.jsdelivr.net/fetch/0.9.0/fetch.min.js\"></script>\n" +
             "  <script src=\"//cdn.jsdelivr.net/react/15.4.2/react.min.js\"></script>\n" +
             "  <script src=\"//cdn.jsdelivr.net/react/15.4.2/react-dom.min.js\"></script>\n" +
-            "  <script src=\"//cdn.jsdelivr.net/graphiql/${GRAPHIQL_VERSION}/graphiql.min.js\"></script>\n" +
+            "  <script src=\"https://unpkg.com/graphiql@${GRAPHIQL_VERSION}/graphiql.min.js\"></script>\n" +
             "</head>\n" +
             "<body>\n" +
             "  <script>\n" +

@@ -60,7 +60,7 @@ public class ValidatorHandlerTest {
             ValidatorHandler validatorHandler = new ValidatorHandler();
             validatorHandler.setNext(handler);
             server = Undertow.builder()
-                    .addHttpListener(8080, "localhost")
+                    .addHttpListener(8081, "localhost")
                     .setHandler(validatorHandler)
                     .build();
             server.start();
@@ -92,7 +92,7 @@ public class ValidatorHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         final ClientConnection connection;
         try {
-            connection = client.connect(new URI("http://localhost:8080"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
+            connection = client.connect(new URI("http://localhost:8081"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
         } catch (Exception e) {
             throw new ClientException(e);
         }
@@ -123,7 +123,7 @@ public class ValidatorHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         final ClientConnection connection;
         try {
-            connection = client.connect(new URI("http://localhost:8080"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
+            connection = client.connect(new URI("http://localhost:8081"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
         } catch (Exception e) {
             throw new ClientException(e);
         }
@@ -163,7 +163,7 @@ public class ValidatorHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         final ClientConnection connection;
         try {
-            connection = client.connect(new URI("http://localhost:8080"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
+            connection = client.connect(new URI("http://localhost:8081"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
         } catch (Exception e) {
             throw new ClientException(e);
         }
@@ -195,7 +195,7 @@ public class ValidatorHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         final ClientConnection connection;
         try {
-            connection = client.connect(new URI("http://localhost:8080"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
+            connection = client.connect(new URI("http://localhost:8081"), Http2Client.WORKER, Http2Client.SSL, Http2Client.POOL, OptionMap.EMPTY).get();
         } catch (Exception e) {
             throw new ClientException(e);
         }

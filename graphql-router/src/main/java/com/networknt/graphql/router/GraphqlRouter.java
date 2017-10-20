@@ -1,6 +1,5 @@
 package com.networknt.graphql.router;
 
-import com.networknt.config.Config;
 import com.networknt.graphql.common.GraphqlUtil;
 import com.networknt.info.ServerInfoGetHandler;
 import com.networknt.server.HandlerProvider;
@@ -18,7 +17,9 @@ public class GraphqlRouter implements HandlerProvider {
         return Handlers.routing()
                 .add(Methods.GET, GraphqlUtil.config.getPath(), new GraphqlGetHandler())
                 .add(Methods.POST, GraphqlUtil.config.getPath(), new GraphqlPostHandler())
+                .add(Methods.OPTIONS, GraphqlUtil.config.getPath(), new GraphqlSchemaHandler())
                 .add(Methods.GET, "/server/info", new ServerInfoGetHandler())
+                .add(Methods.GET, GraphqlUtil.config.getSubscriptionsPath(), Handlers.websocket(new GraphqlSubscriptionHandler()))
                 ;
     }
 }
