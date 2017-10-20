@@ -53,6 +53,14 @@ public class QueryParameters {
         return parameters;
     }
 
+    public static QueryParameters from(Map inputData) {
+        QueryParameters parameters = new QueryParameters();
+        Map<String, Object> payload = (Map)inputData.get("payload");
+        parameters.query = (String)payload.get("query");
+        parameters.variables = (Map)payload.get("variables");
+        return parameters;
+    }
+
 
     private static Map<String, Object> getVariables(Object variables) throws IOException {
         if (variables instanceof Map) {
