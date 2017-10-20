@@ -1,28 +1,13 @@
 package com.networknt.graphql.router;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.networknt.config.Config;
-import com.networknt.graphql.utils.QueryParameters;
-import com.sun.deploy.security.WIExplorerBrowserAuthenticator;
-import graphql.ExecutionInput;
-import graphql.ExecutionResult;
-import graphql.GraphQL;
-import graphql.execution.instrumentation.ChainedInstrumentation;
-import graphql.execution.instrumentation.Instrumentation;
-import graphql.execution.instrumentation.tracing.TracingInstrumentation;
 import io.undertow.websockets.WebSocketConnectionCallback;
 import io.undertow.websockets.core.AbstractReceiveListener;
 import io.undertow.websockets.core.BufferedTextMessage;
 import io.undertow.websockets.core.WebSocketChannel;
 import io.undertow.websockets.core.WebSockets;
 import io.undertow.websockets.spi.WebSocketHttpExchange;
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by Nicholas Azar on October 18, 2017.
@@ -31,7 +16,7 @@ public class GraphqlSubscriptionHandler implements WebSocketConnectionCallback {
 
     @Override
     public void onConnect(WebSocketHttpExchange webSocketHttpExchange, WebSocketChannel webSocketChannel) {
-        webSocketHttpExchange.setResponseHeader("Sec-WebSocket-Protocol", "graphql-ws");
+
         webSocketChannel.getReceiveSetter().set(new AbstractReceiveListener() {
 
             @Override
