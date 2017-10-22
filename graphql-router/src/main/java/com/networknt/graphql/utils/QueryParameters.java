@@ -23,9 +23,9 @@ import java.util.Map;
  */
 public class QueryParameters {
 
-    String query;
-    String operationName;
-    Map<String, Object> variables = Collections.emptyMap();
+    private String query;
+    private String operationName;
+    private Map<String, Object> variables = Collections.emptyMap();
 
     public String getQuery() {
         return query;
@@ -39,20 +39,6 @@ public class QueryParameters {
         return variables;
     }
 
-    public static QueryParameters from(String queryMessage) {
-        QueryParameters parameters = new QueryParameters();
-        Map<String, Object> json;
-        try {
-            json = Config.getInstance().getMapper().readValue(queryMessage, new TypeReference<Map<String, Object>>(){});
-            parameters.query = (String) json.get("query");
-            parameters.operationName = (String) json.get("operationName");
-            parameters.variables = getVariables(json.get("variables"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return parameters;
-    }
-
     public static QueryParameters from(Map inputData) {
         QueryParameters parameters = new QueryParameters();
         Map<String, Object> payload = (Map)inputData.get("payload");
@@ -60,16 +46,4 @@ public class QueryParameters {
         parameters.variables = (Map)payload.get("variables");
         return parameters;
     }
-
-
-    private static Map<String, Object> getVariables(Object variables) throws IOException {
-        if (variables instanceof Map) {
-            Map<?, ?> inputVars = (Map) variables;
-            Map<String, Object> vars = new HashMap<>();
-            inputVars.forEach((k, v) -> vars.put(String.valueOf(k), v));
-            return vars;
-        }
-        return Config.getInstance().getMapper().readValue(String.valueOf(variables), new TypeReference<Map<String, Object>>(){});
-    }
-
 }

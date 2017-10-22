@@ -63,6 +63,13 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -88,7 +95,7 @@
         <version.zookeeper>3.5.2-alpha</version.zookeeper>
         <version.zkclient>0.3</version.zkclient>
         <version.curator>3.2.1</version.curator>
-        <version.graphql>5.0</version.graphql>
+        <version.graphql>2017-10-22T17-53-02</version.graphql>
         <version.rxjava>2.1.5</version.rxjava>
     </properties>
 
